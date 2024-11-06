@@ -1,0 +1,1273 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    A
+    COMO
+    CREA
+    CUENTA
+    DEFECTO
+    ES
+    ESTO
+    ES_NULO
+    EXISTE
+    MUCHO
+    ORDENA
+    PARECIDO
+    REFERENTE
+    TENIENDO
+    TIRA
+    TRANSFORMA
+
+Grammar
+
+Rule 0     S' -> usql_query
+Rule 1     usql_query -> select_query
+Rule 2     usql_query -> insert_query
+Rule 3     usql_query -> update_query
+Rule 4     usql_query -> delete_query
+Rule 5     usql_query -> alter_query
+Rule 6     select_query -> TRAEME selection DE LA TABLA IDENTIFIER group_by join condition SEMICOLON
+Rule 7     insert_query -> METE EN insertion LOS VALORES LPAREN value_list RPAREN SEMICOLON
+Rule 8     update_query -> ACTUALIZA IDENTIFIER SETEA IDENTIFIER OPERATOR value condition SEMICOLON
+Rule 9     delete_query -> BORRA DE LA TABLA IDENTIFIER condition SEMICOLON
+Rule 10    alter_query -> CAMBIA LA TABLA IDENTIFIER AGREGA LA COLUMNA column_data SEMICOLON
+Rule 11    alter_query -> CAMBIA LA TABLA IDENTIFIER ELIMINA LA COLUMNA IDENTIFIER SEMICOLON
+Rule 12    column_data -> IDENTIFIER data_type constraints
+Rule 13    column_data -> IDENTIFIER data_type
+Rule 14    data_type -> VARCHAR LPAREN NUMBER RPAREN
+Rule 15    data_type -> INT
+Rule 16    data_type -> DATE
+Rule 17    data_type -> FLOAT
+Rule 18    constraints -> NO NULO
+Rule 19    constraints -> UNICO
+Rule 20    constraints -> CLAVE PRIMA
+Rule 21    selection -> TODO
+Rule 22    selection -> CONTANDO LPAREN TODO RPAREN
+Rule 23    selection -> LOS DISTINTOS IDENTIFIER
+Rule 24    join -> empty
+Rule 25    join -> MEZCLANDO IDENTIFIER EN IDENTIFIER DOT IDENTIFIER OPERATOR IDENTIFIER DOT IDENTIFIER
+Rule 26    group_by -> empty
+Rule 27    group_by -> AGRUPANDO POR IDENTIFIER grouping_condition
+Rule 28    grouping_condition -> empty
+Rule 29    grouping_condition -> WHERE DEL GROUP BY left_side_id OPERATOR value
+Rule 30    left_side_id -> IDENTIFIER
+Rule 31    left_side_id -> IDENTIFIER LPAREN OPERATOR RPAREN
+Rule 32    insertion -> IDENTIFIER
+Rule 33    insertion -> IDENTIFIER LPAREN column_list RPAREN
+Rule 34    column_list -> IDENTIFIER
+Rule 35    column_list -> column_list COMMA IDENTIFIER
+Rule 36    value_list -> value
+Rule 37    value_list -> value_list COMMA value
+Rule 38    condition -> DONDE expression
+Rule 39    condition -> empty
+Rule 40    expression -> IDENTIFIER OPERATOR value
+Rule 41    expression -> IDENTIFIER DOT IDENTIFIER OPERATOR value
+Rule 42    expression -> IDENTIFIER ENTRE value Y value
+Rule 43    value -> NUMBER
+Rule 44    value -> STRING
+Rule 45    empty -> <empty>
+
+Terminals, with rules where they appear
+
+A                    : 
+ACTUALIZA            : 8
+AGREGA               : 10
+AGRUPANDO            : 27
+BORRA                : 9
+BY                   : 29
+CAMBIA               : 10 11
+CLAVE                : 20
+COLUMNA              : 10 11
+COMMA                : 35 37
+COMO                 : 
+CONTANDO             : 22
+CREA                 : 
+CUENTA               : 
+DATE                 : 16
+DE                   : 6 9
+DEFECTO              : 
+DEL                  : 29
+DISTINTOS            : 23
+DONDE                : 38
+DOT                  : 25 25 41
+ELIMINA              : 11
+EN                   : 7 25
+ENTRE                : 42
+ES                   : 
+ESTO                 : 
+ES_NULO              : 
+EXISTE               : 
+FLOAT                : 17
+GROUP                : 29
+IDENTIFIER           : 6 8 8 9 10 11 11 12 13 23 25 25 25 25 25 27 30 31 32 33 34 35 40 41 41 42
+INT                  : 15
+LA                   : 6 9 10 10 11 11
+LOS                  : 7 23
+LPAREN               : 7 14 22 31 33
+METE                 : 7
+MEZCLANDO            : 25
+MUCHO                : 
+NO                   : 18
+NULO                 : 18
+NUMBER               : 14 43
+OPERATOR             : 8 25 29 31 40 41
+ORDENA               : 
+PARECIDO             : 
+POR                  : 27
+PRIMA                : 20
+REFERENTE            : 
+RPAREN               : 7 14 22 31 33
+SEMICOLON            : 6 7 8 9 10 11
+SETEA                : 8
+STRING               : 44
+TABLA                : 6 9 10 11
+TENIENDO             : 
+TIRA                 : 
+TODO                 : 21 22
+TRAEME               : 6
+TRANSFORMA           : 
+UNICO                : 19
+VALORES              : 7
+VARCHAR              : 14
+WHERE                : 29
+Y                    : 42
+error                : 
+
+Nonterminals, with rules where they appear
+
+alter_query          : 5
+column_data          : 10
+column_list          : 33 35
+condition            : 6 8 9
+constraints          : 12
+data_type            : 12 13
+delete_query         : 4
+empty                : 24 26 28 39
+expression           : 38
+group_by             : 6
+grouping_condition   : 27
+insert_query         : 2
+insertion            : 7
+join                 : 6
+left_side_id         : 29
+select_query         : 1
+selection            : 6
+update_query         : 3
+usql_query           : 0
+value                : 8 29 36 37 40 41 42 42
+value_list           : 7 37
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . usql_query
+    (1) usql_query -> . select_query
+    (2) usql_query -> . insert_query
+    (3) usql_query -> . update_query
+    (4) usql_query -> . delete_query
+    (5) usql_query -> . alter_query
+    (6) select_query -> . TRAEME selection DE LA TABLA IDENTIFIER group_by join condition SEMICOLON
+    (7) insert_query -> . METE EN insertion LOS VALORES LPAREN value_list RPAREN SEMICOLON
+    (8) update_query -> . ACTUALIZA IDENTIFIER SETEA IDENTIFIER OPERATOR value condition SEMICOLON
+    (9) delete_query -> . BORRA DE LA TABLA IDENTIFIER condition SEMICOLON
+    (10) alter_query -> . CAMBIA LA TABLA IDENTIFIER AGREGA LA COLUMNA column_data SEMICOLON
+    (11) alter_query -> . CAMBIA LA TABLA IDENTIFIER ELIMINA LA COLUMNA IDENTIFIER SEMICOLON
+
+    TRAEME          shift and go to state 7
+    METE            shift and go to state 8
+    ACTUALIZA       shift and go to state 9
+    BORRA           shift and go to state 10
+    CAMBIA          shift and go to state 11
+
+    usql_query                     shift and go to state 1
+    select_query                   shift and go to state 2
+    insert_query                   shift and go to state 3
+    update_query                   shift and go to state 4
+    delete_query                   shift and go to state 5
+    alter_query                    shift and go to state 6
+
+state 1
+
+    (0) S' -> usql_query .
+
+
+
+state 2
+
+    (1) usql_query -> select_query .
+
+    $end            reduce using rule 1 (usql_query -> select_query .)
+
+
+state 3
+
+    (2) usql_query -> insert_query .
+
+    $end            reduce using rule 2 (usql_query -> insert_query .)
+
+
+state 4
+
+    (3) usql_query -> update_query .
+
+    $end            reduce using rule 3 (usql_query -> update_query .)
+
+
+state 5
+
+    (4) usql_query -> delete_query .
+
+    $end            reduce using rule 4 (usql_query -> delete_query .)
+
+
+state 6
+
+    (5) usql_query -> alter_query .
+
+    $end            reduce using rule 5 (usql_query -> alter_query .)
+
+
+state 7
+
+    (6) select_query -> TRAEME . selection DE LA TABLA IDENTIFIER group_by join condition SEMICOLON
+    (21) selection -> . TODO
+    (22) selection -> . CONTANDO LPAREN TODO RPAREN
+    (23) selection -> . LOS DISTINTOS IDENTIFIER
+
+    TODO            shift and go to state 13
+    CONTANDO        shift and go to state 14
+    LOS             shift and go to state 15
+
+    selection                      shift and go to state 12
+
+state 8
+
+    (7) insert_query -> METE . EN insertion LOS VALORES LPAREN value_list RPAREN SEMICOLON
+
+    EN              shift and go to state 16
+
+
+state 9
+
+    (8) update_query -> ACTUALIZA . IDENTIFIER SETEA IDENTIFIER OPERATOR value condition SEMICOLON
+
+    IDENTIFIER      shift and go to state 17
+
+
+state 10
+
+    (9) delete_query -> BORRA . DE LA TABLA IDENTIFIER condition SEMICOLON
+
+    DE              shift and go to state 18
+
+
+state 11
+
+    (10) alter_query -> CAMBIA . LA TABLA IDENTIFIER AGREGA LA COLUMNA column_data SEMICOLON
+    (11) alter_query -> CAMBIA . LA TABLA IDENTIFIER ELIMINA LA COLUMNA IDENTIFIER SEMICOLON
+
+    LA              shift and go to state 19
+
+
+state 12
+
+    (6) select_query -> TRAEME selection . DE LA TABLA IDENTIFIER group_by join condition SEMICOLON
+
+    DE              shift and go to state 20
+
+
+state 13
+
+    (21) selection -> TODO .
+
+    DE              reduce using rule 21 (selection -> TODO .)
+
+
+state 14
+
+    (22) selection -> CONTANDO . LPAREN TODO RPAREN
+
+    LPAREN          shift and go to state 21
+
+
+state 15
+
+    (23) selection -> LOS . DISTINTOS IDENTIFIER
+
+    DISTINTOS       shift and go to state 22
+
+
+state 16
+
+    (7) insert_query -> METE EN . insertion LOS VALORES LPAREN value_list RPAREN SEMICOLON
+    (32) insertion -> . IDENTIFIER
+    (33) insertion -> . IDENTIFIER LPAREN column_list RPAREN
+
+    IDENTIFIER      shift and go to state 24
+
+    insertion                      shift and go to state 23
+
+state 17
+
+    (8) update_query -> ACTUALIZA IDENTIFIER . SETEA IDENTIFIER OPERATOR value condition SEMICOLON
+
+    SETEA           shift and go to state 25
+
+
+state 18
+
+    (9) delete_query -> BORRA DE . LA TABLA IDENTIFIER condition SEMICOLON
+
+    LA              shift and go to state 26
+
+
+state 19
+
+    (10) alter_query -> CAMBIA LA . TABLA IDENTIFIER AGREGA LA COLUMNA column_data SEMICOLON
+    (11) alter_query -> CAMBIA LA . TABLA IDENTIFIER ELIMINA LA COLUMNA IDENTIFIER SEMICOLON
+
+    TABLA           shift and go to state 27
+
+
+state 20
+
+    (6) select_query -> TRAEME selection DE . LA TABLA IDENTIFIER group_by join condition SEMICOLON
+
+    LA              shift and go to state 28
+
+
+state 21
+
+    (22) selection -> CONTANDO LPAREN . TODO RPAREN
+
+    TODO            shift and go to state 29
+
+
+state 22
+
+    (23) selection -> LOS DISTINTOS . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 30
+
+
+state 23
+
+    (7) insert_query -> METE EN insertion . LOS VALORES LPAREN value_list RPAREN SEMICOLON
+
+    LOS             shift and go to state 31
+
+
+state 24
+
+    (32) insertion -> IDENTIFIER .
+    (33) insertion -> IDENTIFIER . LPAREN column_list RPAREN
+
+    LOS             reduce using rule 32 (insertion -> IDENTIFIER .)
+    LPAREN          shift and go to state 32
+
+
+state 25
+
+    (8) update_query -> ACTUALIZA IDENTIFIER SETEA . IDENTIFIER OPERATOR value condition SEMICOLON
+
+    IDENTIFIER      shift and go to state 33
+
+
+state 26
+
+    (9) delete_query -> BORRA DE LA . TABLA IDENTIFIER condition SEMICOLON
+
+    TABLA           shift and go to state 34
+
+
+state 27
+
+    (10) alter_query -> CAMBIA LA TABLA . IDENTIFIER AGREGA LA COLUMNA column_data SEMICOLON
+    (11) alter_query -> CAMBIA LA TABLA . IDENTIFIER ELIMINA LA COLUMNA IDENTIFIER SEMICOLON
+
+    IDENTIFIER      shift and go to state 35
+
+
+state 28
+
+    (6) select_query -> TRAEME selection DE LA . TABLA IDENTIFIER group_by join condition SEMICOLON
+
+    TABLA           shift and go to state 36
+
+
+state 29
+
+    (22) selection -> CONTANDO LPAREN TODO . RPAREN
+
+    RPAREN          shift and go to state 37
+
+
+state 30
+
+    (23) selection -> LOS DISTINTOS IDENTIFIER .
+
+    DE              reduce using rule 23 (selection -> LOS DISTINTOS IDENTIFIER .)
+
+
+state 31
+
+    (7) insert_query -> METE EN insertion LOS . VALORES LPAREN value_list RPAREN SEMICOLON
+
+    VALORES         shift and go to state 38
+
+
+state 32
+
+    (33) insertion -> IDENTIFIER LPAREN . column_list RPAREN
+    (34) column_list -> . IDENTIFIER
+    (35) column_list -> . column_list COMMA IDENTIFIER
+
+    IDENTIFIER      shift and go to state 39
+
+    column_list                    shift and go to state 40
+
+state 33
+
+    (8) update_query -> ACTUALIZA IDENTIFIER SETEA IDENTIFIER . OPERATOR value condition SEMICOLON
+
+    OPERATOR        shift and go to state 41
+
+
+state 34
+
+    (9) delete_query -> BORRA DE LA TABLA . IDENTIFIER condition SEMICOLON
+
+    IDENTIFIER      shift and go to state 42
+
+
+state 35
+
+    (10) alter_query -> CAMBIA LA TABLA IDENTIFIER . AGREGA LA COLUMNA column_data SEMICOLON
+    (11) alter_query -> CAMBIA LA TABLA IDENTIFIER . ELIMINA LA COLUMNA IDENTIFIER SEMICOLON
+
+    AGREGA          shift and go to state 43
+    ELIMINA         shift and go to state 44
+
+
+state 36
+
+    (6) select_query -> TRAEME selection DE LA TABLA . IDENTIFIER group_by join condition SEMICOLON
+
+    IDENTIFIER      shift and go to state 45
+
+
+state 37
+
+    (22) selection -> CONTANDO LPAREN TODO RPAREN .
+
+    DE              reduce using rule 22 (selection -> CONTANDO LPAREN TODO RPAREN .)
+
+
+state 38
+
+    (7) insert_query -> METE EN insertion LOS VALORES . LPAREN value_list RPAREN SEMICOLON
+
+    LPAREN          shift and go to state 46
+
+
+state 39
+
+    (34) column_list -> IDENTIFIER .
+
+    RPAREN          reduce using rule 34 (column_list -> IDENTIFIER .)
+    COMMA           reduce using rule 34 (column_list -> IDENTIFIER .)
+
+
+state 40
+
+    (33) insertion -> IDENTIFIER LPAREN column_list . RPAREN
+    (35) column_list -> column_list . COMMA IDENTIFIER
+
+    RPAREN          shift and go to state 47
+    COMMA           shift and go to state 48
+
+
+state 41
+
+    (8) update_query -> ACTUALIZA IDENTIFIER SETEA IDENTIFIER OPERATOR . value condition SEMICOLON
+    (43) value -> . NUMBER
+    (44) value -> . STRING
+
+    NUMBER          shift and go to state 50
+    STRING          shift and go to state 51
+
+    value                          shift and go to state 49
+
+state 42
+
+    (9) delete_query -> BORRA DE LA TABLA IDENTIFIER . condition SEMICOLON
+    (38) condition -> . DONDE expression
+    (39) condition -> . empty
+    (45) empty -> .
+
+    DONDE           shift and go to state 53
+    SEMICOLON       reduce using rule 45 (empty -> .)
+
+    condition                      shift and go to state 52
+    empty                          shift and go to state 54
+
+state 43
+
+    (10) alter_query -> CAMBIA LA TABLA IDENTIFIER AGREGA . LA COLUMNA column_data SEMICOLON
+
+    LA              shift and go to state 55
+
+
+state 44
+
+    (11) alter_query -> CAMBIA LA TABLA IDENTIFIER ELIMINA . LA COLUMNA IDENTIFIER SEMICOLON
+
+    LA              shift and go to state 56
+
+
+state 45
+
+    (6) select_query -> TRAEME selection DE LA TABLA IDENTIFIER . group_by join condition SEMICOLON
+    (26) group_by -> . empty
+    (27) group_by -> . AGRUPANDO POR IDENTIFIER grouping_condition
+    (45) empty -> .
+
+    AGRUPANDO       shift and go to state 59
+    MEZCLANDO       reduce using rule 45 (empty -> .)
+    DONDE           reduce using rule 45 (empty -> .)
+    SEMICOLON       reduce using rule 45 (empty -> .)
+
+    group_by                       shift and go to state 57
+    empty                          shift and go to state 58
+
+state 46
+
+    (7) insert_query -> METE EN insertion LOS VALORES LPAREN . value_list RPAREN SEMICOLON
+    (36) value_list -> . value
+    (37) value_list -> . value_list COMMA value
+    (43) value -> . NUMBER
+    (44) value -> . STRING
+
+    NUMBER          shift and go to state 50
+    STRING          shift and go to state 51
+
+    value_list                     shift and go to state 60
+    value                          shift and go to state 61
+
+state 47
+
+    (33) insertion -> IDENTIFIER LPAREN column_list RPAREN .
+
+    LOS             reduce using rule 33 (insertion -> IDENTIFIER LPAREN column_list RPAREN .)
+
+
+state 48
+
+    (35) column_list -> column_list COMMA . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 62
+
+
+state 49
+
+    (8) update_query -> ACTUALIZA IDENTIFIER SETEA IDENTIFIER OPERATOR value . condition SEMICOLON
+    (38) condition -> . DONDE expression
+    (39) condition -> . empty
+    (45) empty -> .
+
+    DONDE           shift and go to state 53
+    SEMICOLON       reduce using rule 45 (empty -> .)
+
+    condition                      shift and go to state 63
+    empty                          shift and go to state 54
+
+state 50
+
+    (43) value -> NUMBER .
+
+    DONDE           reduce using rule 43 (value -> NUMBER .)
+    SEMICOLON       reduce using rule 43 (value -> NUMBER .)
+    RPAREN          reduce using rule 43 (value -> NUMBER .)
+    COMMA           reduce using rule 43 (value -> NUMBER .)
+    Y               reduce using rule 43 (value -> NUMBER .)
+    MEZCLANDO       reduce using rule 43 (value -> NUMBER .)
+
+
+state 51
+
+    (44) value -> STRING .
+
+    DONDE           reduce using rule 44 (value -> STRING .)
+    SEMICOLON       reduce using rule 44 (value -> STRING .)
+    RPAREN          reduce using rule 44 (value -> STRING .)
+    COMMA           reduce using rule 44 (value -> STRING .)
+    Y               reduce using rule 44 (value -> STRING .)
+    MEZCLANDO       reduce using rule 44 (value -> STRING .)
+
+
+state 52
+
+    (9) delete_query -> BORRA DE LA TABLA IDENTIFIER condition . SEMICOLON
+
+    SEMICOLON       shift and go to state 64
+
+
+state 53
+
+    (38) condition -> DONDE . expression
+    (40) expression -> . IDENTIFIER OPERATOR value
+    (41) expression -> . IDENTIFIER DOT IDENTIFIER OPERATOR value
+    (42) expression -> . IDENTIFIER ENTRE value Y value
+
+    IDENTIFIER      shift and go to state 66
+
+    expression                     shift and go to state 65
+
+state 54
+
+    (39) condition -> empty .
+
+    SEMICOLON       reduce using rule 39 (condition -> empty .)
+
+
+state 55
+
+    (10) alter_query -> CAMBIA LA TABLA IDENTIFIER AGREGA LA . COLUMNA column_data SEMICOLON
+
+    COLUMNA         shift and go to state 67
+
+
+state 56
+
+    (11) alter_query -> CAMBIA LA TABLA IDENTIFIER ELIMINA LA . COLUMNA IDENTIFIER SEMICOLON
+
+    COLUMNA         shift and go to state 68
+
+
+state 57
+
+    (6) select_query -> TRAEME selection DE LA TABLA IDENTIFIER group_by . join condition SEMICOLON
+    (24) join -> . empty
+    (25) join -> . MEZCLANDO IDENTIFIER EN IDENTIFIER DOT IDENTIFIER OPERATOR IDENTIFIER DOT IDENTIFIER
+    (45) empty -> .
+
+    MEZCLANDO       shift and go to state 71
+    DONDE           reduce using rule 45 (empty -> .)
+    SEMICOLON       reduce using rule 45 (empty -> .)
+
+    join                           shift and go to state 69
+    empty                          shift and go to state 70
+
+state 58
+
+    (26) group_by -> empty .
+
+    MEZCLANDO       reduce using rule 26 (group_by -> empty .)
+    DONDE           reduce using rule 26 (group_by -> empty .)
+    SEMICOLON       reduce using rule 26 (group_by -> empty .)
+
+
+state 59
+
+    (27) group_by -> AGRUPANDO . POR IDENTIFIER grouping_condition
+
+    POR             shift and go to state 72
+
+
+state 60
+
+    (7) insert_query -> METE EN insertion LOS VALORES LPAREN value_list . RPAREN SEMICOLON
+    (37) value_list -> value_list . COMMA value
+
+    RPAREN          shift and go to state 73
+    COMMA           shift and go to state 74
+
+
+state 61
+
+    (36) value_list -> value .
+
+    RPAREN          reduce using rule 36 (value_list -> value .)
+    COMMA           reduce using rule 36 (value_list -> value .)
+
+
+state 62
+
+    (35) column_list -> column_list COMMA IDENTIFIER .
+
+    RPAREN          reduce using rule 35 (column_list -> column_list COMMA IDENTIFIER .)
+    COMMA           reduce using rule 35 (column_list -> column_list COMMA IDENTIFIER .)
+
+
+state 63
+
+    (8) update_query -> ACTUALIZA IDENTIFIER SETEA IDENTIFIER OPERATOR value condition . SEMICOLON
+
+    SEMICOLON       shift and go to state 75
+
+
+state 64
+
+    (9) delete_query -> BORRA DE LA TABLA IDENTIFIER condition SEMICOLON .
+
+    $end            reduce using rule 9 (delete_query -> BORRA DE LA TABLA IDENTIFIER condition SEMICOLON .)
+
+
+state 65
+
+    (38) condition -> DONDE expression .
+
+    SEMICOLON       reduce using rule 38 (condition -> DONDE expression .)
+
+
+state 66
+
+    (40) expression -> IDENTIFIER . OPERATOR value
+    (41) expression -> IDENTIFIER . DOT IDENTIFIER OPERATOR value
+    (42) expression -> IDENTIFIER . ENTRE value Y value
+
+    OPERATOR        shift and go to state 76
+    DOT             shift and go to state 77
+    ENTRE           shift and go to state 78
+
+
+state 67
+
+    (10) alter_query -> CAMBIA LA TABLA IDENTIFIER AGREGA LA COLUMNA . column_data SEMICOLON
+    (12) column_data -> . IDENTIFIER data_type constraints
+    (13) column_data -> . IDENTIFIER data_type
+
+    IDENTIFIER      shift and go to state 79
+
+    column_data                    shift and go to state 80
+
+state 68
+
+    (11) alter_query -> CAMBIA LA TABLA IDENTIFIER ELIMINA LA COLUMNA . IDENTIFIER SEMICOLON
+
+    IDENTIFIER      shift and go to state 81
+
+
+state 69
+
+    (6) select_query -> TRAEME selection DE LA TABLA IDENTIFIER group_by join . condition SEMICOLON
+    (38) condition -> . DONDE expression
+    (39) condition -> . empty
+    (45) empty -> .
+
+    DONDE           shift and go to state 53
+    SEMICOLON       reduce using rule 45 (empty -> .)
+
+    condition                      shift and go to state 82
+    empty                          shift and go to state 54
+
+state 70
+
+    (24) join -> empty .
+
+    DONDE           reduce using rule 24 (join -> empty .)
+    SEMICOLON       reduce using rule 24 (join -> empty .)
+
+
+state 71
+
+    (25) join -> MEZCLANDO . IDENTIFIER EN IDENTIFIER DOT IDENTIFIER OPERATOR IDENTIFIER DOT IDENTIFIER
+
+    IDENTIFIER      shift and go to state 83
+
+
+state 72
+
+    (27) group_by -> AGRUPANDO POR . IDENTIFIER grouping_condition
+
+    IDENTIFIER      shift and go to state 84
+
+
+state 73
+
+    (7) insert_query -> METE EN insertion LOS VALORES LPAREN value_list RPAREN . SEMICOLON
+
+    SEMICOLON       shift and go to state 85
+
+
+state 74
+
+    (37) value_list -> value_list COMMA . value
+    (43) value -> . NUMBER
+    (44) value -> . STRING
+
+    NUMBER          shift and go to state 50
+    STRING          shift and go to state 51
+
+    value                          shift and go to state 86
+
+state 75
+
+    (8) update_query -> ACTUALIZA IDENTIFIER SETEA IDENTIFIER OPERATOR value condition SEMICOLON .
+
+    $end            reduce using rule 8 (update_query -> ACTUALIZA IDENTIFIER SETEA IDENTIFIER OPERATOR value condition SEMICOLON .)
+
+
+state 76
+
+    (40) expression -> IDENTIFIER OPERATOR . value
+    (43) value -> . NUMBER
+    (44) value -> . STRING
+
+    NUMBER          shift and go to state 50
+    STRING          shift and go to state 51
+
+    value                          shift and go to state 87
+
+state 77
+
+    (41) expression -> IDENTIFIER DOT . IDENTIFIER OPERATOR value
+
+    IDENTIFIER      shift and go to state 88
+
+
+state 78
+
+    (42) expression -> IDENTIFIER ENTRE . value Y value
+    (43) value -> . NUMBER
+    (44) value -> . STRING
+
+    NUMBER          shift and go to state 50
+    STRING          shift and go to state 51
+
+    value                          shift and go to state 89
+
+state 79
+
+    (12) column_data -> IDENTIFIER . data_type constraints
+    (13) column_data -> IDENTIFIER . data_type
+    (14) data_type -> . VARCHAR LPAREN NUMBER RPAREN
+    (15) data_type -> . INT
+    (16) data_type -> . DATE
+    (17) data_type -> . FLOAT
+
+    VARCHAR         shift and go to state 91
+    INT             shift and go to state 92
+    DATE            shift and go to state 93
+    FLOAT           shift and go to state 94
+
+    data_type                      shift and go to state 90
+
+state 80
+
+    (10) alter_query -> CAMBIA LA TABLA IDENTIFIER AGREGA LA COLUMNA column_data . SEMICOLON
+
+    SEMICOLON       shift and go to state 95
+
+
+state 81
+
+    (11) alter_query -> CAMBIA LA TABLA IDENTIFIER ELIMINA LA COLUMNA IDENTIFIER . SEMICOLON
+
+    SEMICOLON       shift and go to state 96
+
+
+state 82
+
+    (6) select_query -> TRAEME selection DE LA TABLA IDENTIFIER group_by join condition . SEMICOLON
+
+    SEMICOLON       shift and go to state 97
+
+
+state 83
+
+    (25) join -> MEZCLANDO IDENTIFIER . EN IDENTIFIER DOT IDENTIFIER OPERATOR IDENTIFIER DOT IDENTIFIER
+
+    EN              shift and go to state 98
+
+
+state 84
+
+    (27) group_by -> AGRUPANDO POR IDENTIFIER . grouping_condition
+    (28) grouping_condition -> . empty
+    (29) grouping_condition -> . WHERE DEL GROUP BY left_side_id OPERATOR value
+    (45) empty -> .
+
+    WHERE           shift and go to state 101
+    MEZCLANDO       reduce using rule 45 (empty -> .)
+    DONDE           reduce using rule 45 (empty -> .)
+    SEMICOLON       reduce using rule 45 (empty -> .)
+
+    grouping_condition             shift and go to state 99
+    empty                          shift and go to state 100
+
+state 85
+
+    (7) insert_query -> METE EN insertion LOS VALORES LPAREN value_list RPAREN SEMICOLON .
+
+    $end            reduce using rule 7 (insert_query -> METE EN insertion LOS VALORES LPAREN value_list RPAREN SEMICOLON .)
+
+
+state 86
+
+    (37) value_list -> value_list COMMA value .
+
+    RPAREN          reduce using rule 37 (value_list -> value_list COMMA value .)
+    COMMA           reduce using rule 37 (value_list -> value_list COMMA value .)
+
+
+state 87
+
+    (40) expression -> IDENTIFIER OPERATOR value .
+
+    SEMICOLON       reduce using rule 40 (expression -> IDENTIFIER OPERATOR value .)
+
+
+state 88
+
+    (41) expression -> IDENTIFIER DOT IDENTIFIER . OPERATOR value
+
+    OPERATOR        shift and go to state 102
+
+
+state 89
+
+    (42) expression -> IDENTIFIER ENTRE value . Y value
+
+    Y               shift and go to state 103
+
+
+state 90
+
+    (12) column_data -> IDENTIFIER data_type . constraints
+    (13) column_data -> IDENTIFIER data_type .
+    (18) constraints -> . NO NULO
+    (19) constraints -> . UNICO
+    (20) constraints -> . CLAVE PRIMA
+
+    SEMICOLON       reduce using rule 13 (column_data -> IDENTIFIER data_type .)
+    NO              shift and go to state 105
+    UNICO           shift and go to state 106
+    CLAVE           shift and go to state 107
+
+    constraints                    shift and go to state 104
+
+state 91
+
+    (14) data_type -> VARCHAR . LPAREN NUMBER RPAREN
+
+    LPAREN          shift and go to state 108
+
+
+state 92
+
+    (15) data_type -> INT .
+
+    NO              reduce using rule 15 (data_type -> INT .)
+    UNICO           reduce using rule 15 (data_type -> INT .)
+    CLAVE           reduce using rule 15 (data_type -> INT .)
+    SEMICOLON       reduce using rule 15 (data_type -> INT .)
+
+
+state 93
+
+    (16) data_type -> DATE .
+
+    NO              reduce using rule 16 (data_type -> DATE .)
+    UNICO           reduce using rule 16 (data_type -> DATE .)
+    CLAVE           reduce using rule 16 (data_type -> DATE .)
+    SEMICOLON       reduce using rule 16 (data_type -> DATE .)
+
+
+state 94
+
+    (17) data_type -> FLOAT .
+
+    NO              reduce using rule 17 (data_type -> FLOAT .)
+    UNICO           reduce using rule 17 (data_type -> FLOAT .)
+    CLAVE           reduce using rule 17 (data_type -> FLOAT .)
+    SEMICOLON       reduce using rule 17 (data_type -> FLOAT .)
+
+
+state 95
+
+    (10) alter_query -> CAMBIA LA TABLA IDENTIFIER AGREGA LA COLUMNA column_data SEMICOLON .
+
+    $end            reduce using rule 10 (alter_query -> CAMBIA LA TABLA IDENTIFIER AGREGA LA COLUMNA column_data SEMICOLON .)
+
+
+state 96
+
+    (11) alter_query -> CAMBIA LA TABLA IDENTIFIER ELIMINA LA COLUMNA IDENTIFIER SEMICOLON .
+
+    $end            reduce using rule 11 (alter_query -> CAMBIA LA TABLA IDENTIFIER ELIMINA LA COLUMNA IDENTIFIER SEMICOLON .)
+
+
+state 97
+
+    (6) select_query -> TRAEME selection DE LA TABLA IDENTIFIER group_by join condition SEMICOLON .
+
+    $end            reduce using rule 6 (select_query -> TRAEME selection DE LA TABLA IDENTIFIER group_by join condition SEMICOLON .)
+
+
+state 98
+
+    (25) join -> MEZCLANDO IDENTIFIER EN . IDENTIFIER DOT IDENTIFIER OPERATOR IDENTIFIER DOT IDENTIFIER
+
+    IDENTIFIER      shift and go to state 109
+
+
+state 99
+
+    (27) group_by -> AGRUPANDO POR IDENTIFIER grouping_condition .
+
+    MEZCLANDO       reduce using rule 27 (group_by -> AGRUPANDO POR IDENTIFIER grouping_condition .)
+    DONDE           reduce using rule 27 (group_by -> AGRUPANDO POR IDENTIFIER grouping_condition .)
+    SEMICOLON       reduce using rule 27 (group_by -> AGRUPANDO POR IDENTIFIER grouping_condition .)
+
+
+state 100
+
+    (28) grouping_condition -> empty .
+
+    MEZCLANDO       reduce using rule 28 (grouping_condition -> empty .)
+    DONDE           reduce using rule 28 (grouping_condition -> empty .)
+    SEMICOLON       reduce using rule 28 (grouping_condition -> empty .)
+
+
+state 101
+
+    (29) grouping_condition -> WHERE . DEL GROUP BY left_side_id OPERATOR value
+
+    DEL             shift and go to state 110
+
+
+state 102
+
+    (41) expression -> IDENTIFIER DOT IDENTIFIER OPERATOR . value
+    (43) value -> . NUMBER
+    (44) value -> . STRING
+
+    NUMBER          shift and go to state 50
+    STRING          shift and go to state 51
+
+    value                          shift and go to state 111
+
+state 103
+
+    (42) expression -> IDENTIFIER ENTRE value Y . value
+    (43) value -> . NUMBER
+    (44) value -> . STRING
+
+    NUMBER          shift and go to state 50
+    STRING          shift and go to state 51
+
+    value                          shift and go to state 112
+
+state 104
+
+    (12) column_data -> IDENTIFIER data_type constraints .
+
+    SEMICOLON       reduce using rule 12 (column_data -> IDENTIFIER data_type constraints .)
+
+
+state 105
+
+    (18) constraints -> NO . NULO
+
+    NULO            shift and go to state 113
+
+
+state 106
+
+    (19) constraints -> UNICO .
+
+    SEMICOLON       reduce using rule 19 (constraints -> UNICO .)
+
+
+state 107
+
+    (20) constraints -> CLAVE . PRIMA
+
+    PRIMA           shift and go to state 114
+
+
+state 108
+
+    (14) data_type -> VARCHAR LPAREN . NUMBER RPAREN
+
+    NUMBER          shift and go to state 115
+
+
+state 109
+
+    (25) join -> MEZCLANDO IDENTIFIER EN IDENTIFIER . DOT IDENTIFIER OPERATOR IDENTIFIER DOT IDENTIFIER
+
+    DOT             shift and go to state 116
+
+
+state 110
+
+    (29) grouping_condition -> WHERE DEL . GROUP BY left_side_id OPERATOR value
+
+    GROUP           shift and go to state 117
+
+
+state 111
+
+    (41) expression -> IDENTIFIER DOT IDENTIFIER OPERATOR value .
+
+    SEMICOLON       reduce using rule 41 (expression -> IDENTIFIER DOT IDENTIFIER OPERATOR value .)
+
+
+state 112
+
+    (42) expression -> IDENTIFIER ENTRE value Y value .
+
+    SEMICOLON       reduce using rule 42 (expression -> IDENTIFIER ENTRE value Y value .)
+
+
+state 113
+
+    (18) constraints -> NO NULO .
+
+    SEMICOLON       reduce using rule 18 (constraints -> NO NULO .)
+
+
+state 114
+
+    (20) constraints -> CLAVE PRIMA .
+
+    SEMICOLON       reduce using rule 20 (constraints -> CLAVE PRIMA .)
+
+
+state 115
+
+    (14) data_type -> VARCHAR LPAREN NUMBER . RPAREN
+
+    RPAREN          shift and go to state 118
+
+
+state 116
+
+    (25) join -> MEZCLANDO IDENTIFIER EN IDENTIFIER DOT . IDENTIFIER OPERATOR IDENTIFIER DOT IDENTIFIER
+
+    IDENTIFIER      shift and go to state 119
+
+
+state 117
+
+    (29) grouping_condition -> WHERE DEL GROUP . BY left_side_id OPERATOR value
+
+    BY              shift and go to state 120
+
+
+state 118
+
+    (14) data_type -> VARCHAR LPAREN NUMBER RPAREN .
+
+    NO              reduce using rule 14 (data_type -> VARCHAR LPAREN NUMBER RPAREN .)
+    UNICO           reduce using rule 14 (data_type -> VARCHAR LPAREN NUMBER RPAREN .)
+    CLAVE           reduce using rule 14 (data_type -> VARCHAR LPAREN NUMBER RPAREN .)
+    SEMICOLON       reduce using rule 14 (data_type -> VARCHAR LPAREN NUMBER RPAREN .)
+
+
+state 119
+
+    (25) join -> MEZCLANDO IDENTIFIER EN IDENTIFIER DOT IDENTIFIER . OPERATOR IDENTIFIER DOT IDENTIFIER
+
+    OPERATOR        shift and go to state 121
+
+
+state 120
+
+    (29) grouping_condition -> WHERE DEL GROUP BY . left_side_id OPERATOR value
+    (30) left_side_id -> . IDENTIFIER
+    (31) left_side_id -> . IDENTIFIER LPAREN OPERATOR RPAREN
+
+    IDENTIFIER      shift and go to state 123
+
+    left_side_id                   shift and go to state 122
+
+state 121
+
+    (25) join -> MEZCLANDO IDENTIFIER EN IDENTIFIER DOT IDENTIFIER OPERATOR . IDENTIFIER DOT IDENTIFIER
+
+    IDENTIFIER      shift and go to state 124
+
+
+state 122
+
+    (29) grouping_condition -> WHERE DEL GROUP BY left_side_id . OPERATOR value
+
+    OPERATOR        shift and go to state 125
+
+
+state 123
+
+    (30) left_side_id -> IDENTIFIER .
+    (31) left_side_id -> IDENTIFIER . LPAREN OPERATOR RPAREN
+
+    OPERATOR        reduce using rule 30 (left_side_id -> IDENTIFIER .)
+    LPAREN          shift and go to state 126
+
+
+state 124
+
+    (25) join -> MEZCLANDO IDENTIFIER EN IDENTIFIER DOT IDENTIFIER OPERATOR IDENTIFIER . DOT IDENTIFIER
+
+    DOT             shift and go to state 127
+
+
+state 125
+
+    (29) grouping_condition -> WHERE DEL GROUP BY left_side_id OPERATOR . value
+    (43) value -> . NUMBER
+    (44) value -> . STRING
+
+    NUMBER          shift and go to state 50
+    STRING          shift and go to state 51
+
+    value                          shift and go to state 128
+
+state 126
+
+    (31) left_side_id -> IDENTIFIER LPAREN . OPERATOR RPAREN
+
+    OPERATOR        shift and go to state 129
+
+
+state 127
+
+    (25) join -> MEZCLANDO IDENTIFIER EN IDENTIFIER DOT IDENTIFIER OPERATOR IDENTIFIER DOT . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 130
+
+
+state 128
+
+    (29) grouping_condition -> WHERE DEL GROUP BY left_side_id OPERATOR value .
+
+    MEZCLANDO       reduce using rule 29 (grouping_condition -> WHERE DEL GROUP BY left_side_id OPERATOR value .)
+    DONDE           reduce using rule 29 (grouping_condition -> WHERE DEL GROUP BY left_side_id OPERATOR value .)
+    SEMICOLON       reduce using rule 29 (grouping_condition -> WHERE DEL GROUP BY left_side_id OPERATOR value .)
+
+
+state 129
+
+    (31) left_side_id -> IDENTIFIER LPAREN OPERATOR . RPAREN
+
+    RPAREN          shift and go to state 131
+
+
+state 130
+
+    (25) join -> MEZCLANDO IDENTIFIER EN IDENTIFIER DOT IDENTIFIER OPERATOR IDENTIFIER DOT IDENTIFIER .
+
+    DONDE           reduce using rule 25 (join -> MEZCLANDO IDENTIFIER EN IDENTIFIER DOT IDENTIFIER OPERATOR IDENTIFIER DOT IDENTIFIER .)
+    SEMICOLON       reduce using rule 25 (join -> MEZCLANDO IDENTIFIER EN IDENTIFIER DOT IDENTIFIER OPERATOR IDENTIFIER DOT IDENTIFIER .)
+
+
+state 131
+
+    (31) left_side_id -> IDENTIFIER LPAREN OPERATOR RPAREN .
+
+    OPERATOR        reduce using rule 31 (left_side_id -> IDENTIFIER LPAREN OPERATOR RPAREN .)
+

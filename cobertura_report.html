@@ -1,0 +1,1904 @@
+<html>
+  <head>
+    <title>pycobertura report</title>
+    <meta charset="UTF-8">
+    <style>
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+
+html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit; /* 1 */
+  font: inherit; /* 2 */
+  margin: 0; /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+input[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box; /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+
+legend {
+  border: 0; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+/*
+* Skeleton V2.0.4
+* Copyright 2014, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 12/29/2014
+*/
+
+
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+- Grid
+- Base Styles
+- Typography
+- Links
+- Buttons
+- Forms
+- Lists
+- Code
+- Tables
+- Spacing
+- Utilities
+- Clearing
+- Media Queries
+*/
+
+
+/* Grid
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box; }
+.column,
+.columns {
+  width: 100%;
+  float: left;
+  box-sizing: border-box; }
+
+/* For devices larger than 400px */
+@media (min-width: 400px) {
+  .container {
+    width: 85%;
+    padding: 0; }
+}
+
+/* For devices larger than 550px */
+@media (min-width: 550px) {
+  .container {
+    width: 80%; }
+  .column,
+  .columns {
+    margin-left: 4%; }
+  .column:first-child,
+  .columns:first-child {
+    margin-left: 0; }
+
+  .one.column,
+  .one.columns                    { width: 4.66666666667%; }
+  .two.columns                    { width: 13.3333333333%; }
+  .three.columns                  { width: 22%;            }
+  .four.columns                   { width: 30.6666666667%; }
+  .five.columns                   { width: 39.3333333333%; }
+  .six.columns                    { width: 48%;            }
+  .seven.columns                  { width: 56.6666666667%; }
+  .eight.columns                  { width: 65.3333333333%; }
+  .nine.columns                   { width: 74.0%;          }
+  .ten.columns                    { width: 82.6666666667%; }
+  .eleven.columns                 { width: 91.3333333333%; }
+  .twelve.columns                 { width: 100%; margin-left: 0; }
+
+  .one-third.column               { width: 30.6666666667%; }
+  .two-thirds.column              { width: 65.3333333333%; }
+
+  .one-half.column                { width: 48%; }
+
+  /* Offsets */
+  .offset-by-one.column,
+  .offset-by-one.columns          { margin-left: 8.66666666667%; }
+  .offset-by-two.column,
+  .offset-by-two.columns          { margin-left: 17.3333333333%; }
+  .offset-by-three.column,
+  .offset-by-three.columns        { margin-left: 26%;            }
+  .offset-by-four.column,
+  .offset-by-four.columns         { margin-left: 34.6666666667%; }
+  .offset-by-five.column,
+  .offset-by-five.columns         { margin-left: 43.3333333333%; }
+  .offset-by-six.column,
+  .offset-by-six.columns          { margin-left: 52%;            }
+  .offset-by-seven.column,
+  .offset-by-seven.columns        { margin-left: 60.6666666667%; }
+  .offset-by-eight.column,
+  .offset-by-eight.columns        { margin-left: 69.3333333333%; }
+  .offset-by-nine.column,
+  .offset-by-nine.columns         { margin-left: 78.0%;          }
+  .offset-by-ten.column,
+  .offset-by-ten.columns          { margin-left: 86.6666666667%; }
+  .offset-by-eleven.column,
+  .offset-by-eleven.columns       { margin-left: 95.3333333333%; }
+
+  .offset-by-one-third.column,
+  .offset-by-one-third.columns    { margin-left: 34.6666666667%; }
+  .offset-by-two-thirds.column,
+  .offset-by-two-thirds.columns   { margin-left: 69.3333333333%; }
+
+  .offset-by-one-half.column,
+  .offset-by-one-half.columns     { margin-left: 52%; }
+
+}
+
+
+/* Base Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* NOTE
+html is set to 62.5% so that all the REM measurements throughout Skeleton
+are based on 10px sizing. So basically 1.5rem = 15px :) */
+html {
+  font-size: 62.5%; }
+body {
+  font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #222; }
+
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-weight: 300; }
+h1 { font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
+h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
+h3 { font-size: 3.0rem; line-height: 1.3;  letter-spacing: -.1rem; }
+h4 { font-size: 2.4rem; line-height: 1.35; letter-spacing: -.08rem; }
+h5 { font-size: 1.8rem; line-height: 1.5;  letter-spacing: -.05rem; }
+h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+  h1 { font-size: 5.0rem; }
+  h2 { font-size: 4.2rem; }
+  h3 { font-size: 3.6rem; }
+  h4 { font-size: 3.0rem; }
+  h5 { font-size: 2.4rem; }
+  h6 { font-size: 1.5rem; }
+}
+
+p {
+  margin-top: 0; }
+
+
+/* Links
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+a {
+  color: #1EAEDB; }
+a:hover {
+  color: #0FA0CE; }
+
+
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: #555;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  box-sizing: border-box; }
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  color: #333;
+  border-color: #888;
+  outline: 0; }
+.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+  color: #FFF;
+  background-color: #33C3F0;
+  border-color: #33C3F0; }
+.button.button-primary:hover,
+button.button-primary:hover,
+input[type="submit"].button-primary:hover,
+input[type="reset"].button-primary:hover,
+input[type="button"].button-primary:hover,
+.button.button-primary:focus,
+button.button-primary:focus,
+input[type="submit"].button-primary:focus,
+input[type="reset"].button-primary:focus,
+input[type="button"].button-primary:focus {
+  color: #FFF;
+  background-color: #1EAEDB;
+  border-color: #1EAEDB; }
+
+
+/* Forms
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  height: 38px;
+  padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box; }
+/* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; }
+textarea {
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px; }
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #33C3F0;
+  outline: 0; }
+label,
+legend {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 600; }
+fieldset {
+  padding: 0;
+  border-width: 0; }
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline; }
+label > .label-body {
+  display: inline-block;
+  margin-left: .5rem;
+  font-weight: normal; }
+
+
+/* Lists
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+ul {
+  list-style: circle inside; }
+ol {
+  list-style: decimal inside; }
+ol, ul {
+  padding-left: 0;
+  margin-top: 0; }
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin: 1.5rem 0 1.5rem 3rem;
+  font-size: 90%; }
+li {
+  margin-bottom: 1rem; }
+
+
+/* Code
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+code {
+  padding: .2rem .5rem;
+  margin: 0 .2rem;
+  font-size: 90%;
+  white-space: nowrap;
+  background: #F1F1F1;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px; }
+pre > code {
+  display: block;
+  padding: 1rem 1.5rem;
+  white-space: pre; }
+
+
+/* Tables
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #E1E1E1; }
+th:first-child,
+td:first-child {
+  padding-left: 0; }
+th:last-child,
+td:last-child {
+  padding-right: 0; }
+
+
+/* Spacing
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+button,
+.button {
+  margin-bottom: 1rem; }
+input,
+textarea,
+select,
+fieldset {
+  margin-bottom: 1.5rem; }
+pre,
+blockquote,
+dl,
+figure,
+table,
+p,
+ul,
+ol,
+form {
+  margin-bottom: 2.5rem; }
+
+
+/* Utilities
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.u-full-width {
+  width: 100%;
+  box-sizing: border-box; }
+.u-max-full-width {
+  max-width: 100%;
+  box-sizing: border-box; }
+.u-pull-right {
+  float: right; }
+.u-pull-left {
+  float: left; }
+
+
+/* Misc
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+hr {
+  margin-top: 3rem;
+  margin-bottom: 3.5rem;
+  border-width: 0;
+  border-top: 1px solid #E1E1E1; }
+
+
+/* Clearing
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Self Clearing Goodness */
+.container:after,
+.row:after,
+.u-cf {
+  content: "";
+  display: table;
+  clear: both; }
+
+
+/* Media Queries
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/*
+Note: The best way to structure the use of media queries is to create the queries
+near the relevant code. For example, if you wanted to change the styles for buttons
+on small devices, paste the mobile query code up in the buttons section and style it
+there.
+*/
+
+
+/* Larger than mobile */
+@media (min-width: 400px) {}
+
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 550px) {}
+
+/* Larger than tablet */
+@media (min-width: 750px) {}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
+.hit {background-color: #EAFFEA}
+.miss {background-color: #FFECEC}
+.container .code {margin-left: 0}
+pre {line-height: 1.3}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>pycobertura report</h1>
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>Filename</th>
+            <th>Stmts</th>
+            <th>Miss</th>
+            <th>Cover</th>
+            <th>Missing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#src/database.py">src/database.py</a></td>
+            <td>31</td>
+            <td>0</td>
+            <td>100.00%</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><a href="#src/fluent_api.py">src/fluent_api.py</a></td>
+            <td>52</td>
+            <td>0</td>
+            <td>100.00%</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><a href="#src/parsetab.py">src/parsetab.py</a></td>
+            <td>18</td>
+            <td>0</td>
+            <td>100.00%</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><a href="#src/usql_parser.py">src/usql_parser.py</a></td>
+            <td>86</td>
+            <td>6</td>
+            <td>93.02%</td>
+            <td>107-108, 164-167</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>TOTAL</td>
+            <td>187</td>
+            <td>6</td>
+            <td>96.79%</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+<h4 id="src/database.py">src/database.py</h4>
+<table class="code u-max-full-width">
+  <tbody>
+    <tr>
+      <td class="lineno">
+        <pre>1 &nbsp;
+2 &nbsp;
+3 &nbsp;
+4 &nbsp;
+5 &nbsp;
+6 &nbsp;
+7 &nbsp;
+8 &nbsp;
+9 &nbsp;
+10 &nbsp;
+11 &nbsp;
+12 &nbsp;
+13 &nbsp;
+14 &nbsp;
+15 &nbsp;
+16 &nbsp;
+17 &nbsp;
+18 &nbsp;
+19 &nbsp;
+20 &nbsp;
+21 &nbsp;
+22 &nbsp;
+23 &nbsp;
+24 &nbsp;
+25 &nbsp;
+26 &nbsp;
+27 &nbsp;
+28 &nbsp;
+29 &nbsp;
+30 &nbsp;
+31 &nbsp;
+32 &nbsp;
+33 &nbsp;
+34 &nbsp;
+35 &nbsp;
+36 &nbsp;
+37 &nbsp;
+38 &nbsp;
+39 &nbsp;
+40 &nbsp;
+41 &nbsp;
+42 &nbsp;
+43 &nbsp;
+44 &nbsp;
+45 &nbsp;
+46 &nbsp;
+47 &nbsp;
+48 &nbsp;
+49 &nbsp;
+50 &nbsp;
+51 &nbsp;
+52 &nbsp;
+53 &nbsp;
+54 &nbsp;
+55 &nbsp;
+56 &nbsp;
+57 &nbsp;
+58 &nbsp;
+59 &nbsp;
+60 &nbsp;
+61 &nbsp;
+62 &nbsp;
+63 &nbsp;
+64 &nbsp;
+65 &nbsp;
+66 &nbsp;
+67 &nbsp;
+68 &nbsp;
+69 &nbsp;
+70 &nbsp;
+71 &nbsp;
+72 &nbsp;
+73 &nbsp;
+74 &nbsp;
+75 &nbsp;
+76 &nbsp;
+77 &nbsp;
+78 &nbsp;
+79 &nbsp;
+</pre>
+      </td>
+      <td class="source">
+        <pre><span class="hit">import sqlite3
+</span><span class="noop">
+</span><span class="hit">class Database:
+</span><span class="noop">
+</span><span class="hit">    def __init__(self):
+</span><span class="hit">        self.conn = sqlite3.connect(&#39;:memory:&#39;)
+</span><span class="hit">        self.cursor = self.conn.cursor()
+</span><span class="noop">
+</span><span class="hit">    def create_tables_and_insert_data(self):
+</span><span class="noop">        # Creación de tablas
+</span><span class="hit">        self.cursor.execute(&#39;&#39;&#39;
+</span><span class="noop">        CREATE TABLE usuarios (
+</span><span class="noop">            nombre TEXT,
+</span><span class="noop">            edad INTEGER
+</span><span class="noop">        )
+</span><span class="noop">        &#39;&#39;&#39;)
+</span><span class="noop">
+</span><span class="hit">        self.cursor.execute(&#39;&#39;&#39;
+</span><span class="noop">        CREATE TABLE clientes (
+</span><span class="noop">            id INTEGER PRIMARY KEY AUTOINCREMENT,
+</span><span class="noop">            nombre TEXT,
+</span><span class="noop">            ciudad TEXT,
+</span><span class="noop">            edad INTEGER
+</span><span class="noop">        )
+</span><span class="noop">        &#39;&#39;&#39;)
+</span><span class="noop">
+</span><span class="hit">        self.cursor.execute(&#39;&#39;&#39;
+</span><span class="noop">        CREATE TABLE empleados (
+</span><span class="noop">            salario INTEGER,
+</span><span class="noop">            puesto TEXT
+</span><span class="noop">        )
+</span><span class="noop">        &#39;&#39;&#39;)
+</span><span class="noop">
+</span><span class="hit">        self.cursor.execute(&#39;&#39;&#39;
+</span><span class="noop">        CREATE TABLE pedidos (
+</span><span class="noop">            id INTEGER PRIMARY KEY AUTOINCREMENT,
+</span><span class="noop">            cliente_id INTEGER,
+</span><span class="noop">            FOREIGN KEY(cliente_id) REFERENCES clientes(id)
+</span><span class="noop">        )
+</span><span class="noop">        &#39;&#39;&#39;)
+</span><span class="noop">
+</span><span class="hit">        self.cursor.execute(&#39;&#39;&#39;
+</span><span class="noop">        CREATE TABLE ventas (
+</span><span class="noop">            producto TEXT
+</span><span class="noop">        )
+</span><span class="noop">        &#39;&#39;&#39;)
+</span><span class="noop">
+</span><span class="noop">        # Inserción de datos en &#39;usuarios&#39;
+</span><span class="hit">        self.cursor.execute(&#34;INSERT INTO usuarios (nombre, edad) VALUES (&#39;Juan&#39;, 25)&#34;)
+</span><span class="hit">        self.cursor.execute(&#34;INSERT INTO usuarios (nombre, edad) VALUES (&#39;Ana&#39;, 20)&#34;)
+</span><span class="hit">        self.cursor.execute(&#34;INSERT INTO usuarios (nombre, edad) VALUES (&#39;Luis&#39;, 17)&#34;)
+</span><span class="hit">        self.cursor.execute(&#34;INSERT INTO usuarios (nombre, edad) VALUES (&#39;María&#39;, 30)&#34;)
+</span><span class="noop">
+</span><span class="noop">        # Inserción de datos en &#39;clientes&#39;
+</span><span class="hit">        self.cursor.execute(&#34;INSERT INTO clientes (nombre, ciudad, edad) VALUES (&#39;Carlos&#39;, &#39;Madrid&#39;, 22)&#34;)
+</span><span class="hit">        self.cursor.execute(&#34;INSERT INTO clientes (nombre, ciudad, edad) VALUES (&#39;Elena&#39;, &#39;Barcelona&#39;, 28)&#34;)
+</span><span class="hit">        self.cursor.execute(&#34;INSERT INTO clientes (nombre, ciudad, edad) VALUES (&#39;Pedro&#39;, &#39;Madrid&#39;, 19)&#34;)
+</span><span class="hit">        self.cursor.execute(&#34;INSERT INTO clientes (nombre, ciudad, edad) VALUES (&#39;Lucía&#39;, &#39;Sevilla&#39;, 32)&#34;)
+</span><span class="noop">
+</span><span class="noop">        # Inserción de datos en &#39;empleados&#39;
+</span><span class="hit">        self.cursor.execute(&#34;INSERT INTO empleados (salario, puesto) VALUES (2500, &#39;ingeniero&#39;)&#34;)
+</span><span class="hit">        self.cursor.execute(&#34;INSERT INTO empleados (salario, puesto) VALUES (2000, &#39;analista&#39;)&#34;)
+</span><span class="hit">        self.cursor.execute(&#34;INSERT INTO empleados (salario, puesto) VALUES (3000, &#39;ingeniero&#39;)&#34;)
+</span><span class="hit">        self.cursor.execute(&#34;INSERT INTO empleados (salario, puesto) VALUES (1500, &#39;técnico&#39;)&#34;)
+</span><span class="noop">
+</span><span class="noop">        # Inserción de datos en &#39;pedidos&#39;
+</span><span class="hit">        self.cursor.execute(&#34;INSERT INTO pedidos (cliente_id) VALUES (1)&#34;)
+</span><span class="hit">        self.cursor.execute(&#34;INSERT INTO pedidos (cliente_id) VALUES (2)&#34;)
+</span><span class="hit">        self.cursor.execute(&#34;INSERT INTO pedidos (cliente_id) VALUES (3)&#34;)
+</span><span class="hit">        self.cursor.execute(&#34;INSERT INTO pedidos (cliente_id) VALUES (1)&#34;)
+</span><span class="noop">
+</span><span class="noop">        # Inserción de datos en &#39;ventas&#39;
+</span><span class="hit">        productos = [&#39;Producto A&#39;, &#39;Producto B&#39;, &#39;Producto A&#39;, &#39;Producto C&#39;, &#39;Producto A&#39;,
+</span><span class="noop">                    &#39;Producto A&#39;, &#39;Producto B&#39;, &#39;Producto A&#39;, &#39;Producto A&#39;, &#39;Producto D&#39;, &#39;Producto A&#39;]
+</span><span class="hit">        for producto in productos:
+</span><span class="hit">            self.cursor.execute(&#34;INSERT INTO ventas (producto) VALUES (?)&#34;, (producto,))
+</span><span class="noop">
+</span><span class="hit">        self.conn.commit()
+</span><span class="noop">
+</span></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h4 id="src/fluent_api.py">src/fluent_api.py</h4>
+<table class="code u-max-full-width">
+  <tbody>
+    <tr>
+      <td class="lineno">
+        <pre>1 &nbsp;
+2 &nbsp;
+3 &nbsp;
+4 &nbsp;
+5 &nbsp;
+6 &nbsp;
+7 &nbsp;
+8 &nbsp;
+9 &nbsp;
+10 &nbsp;
+11 &nbsp;
+12 &nbsp;
+13 &nbsp;
+14 &nbsp;
+15 &nbsp;
+16 &nbsp;
+17 &nbsp;
+18 &nbsp;
+19 &nbsp;
+20 &nbsp;
+21 &nbsp;
+22 &nbsp;
+23 &nbsp;
+24 &nbsp;
+25 &nbsp;
+26 &nbsp;
+27 &nbsp;
+28 &nbsp;
+29 &nbsp;
+30 &nbsp;
+31 &nbsp;
+32 &nbsp;
+33 &nbsp;
+34 &nbsp;
+35 &nbsp;
+36 &nbsp;
+37 &nbsp;
+38 &nbsp;
+39 &nbsp;
+40 &nbsp;
+41 &nbsp;
+42 &nbsp;
+43 &nbsp;
+44 &nbsp;
+45 &nbsp;
+46 &nbsp;
+47 &nbsp;
+48 &nbsp;
+49 &nbsp;
+50 &nbsp;
+51 &nbsp;
+52 &nbsp;
+53 &nbsp;
+54 &nbsp;
+55 &nbsp;
+56 &nbsp;
+57 &nbsp;
+58 &nbsp;
+59 &nbsp;
+60 &nbsp;
+61 &nbsp;
+62 &nbsp;
+63 &nbsp;
+64 &nbsp;
+65 &nbsp;
+66 &nbsp;
+67 &nbsp;
+68 &nbsp;
+69 &nbsp;
+70 &nbsp;
+71 &nbsp;
+</pre>
+      </td>
+      <td class="source">
+        <pre><span class="noop"># fluent_api.py
+</span><span class="noop"># Este módulo implementa una Fluent API para construir consultas USQL.
+</span><span class="noop">
+</span><span class="hit">class USQLQuery:
+</span><span class="hit">    def __init__(self):
+</span><span class="hit">        self.query = &#34;&#34;
+</span><span class="noop">
+</span><span class="hit">    def traeme(self, columns):
+</span><span class="hit">        self.query += f&#34;TRAEME {columns} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">
+</span><span class="hit">    def de_la_tabla(self, table):
+</span><span class="hit">        self.query += f&#34;DE LA TABLA {table} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">
+</span><span class="hit">    def donde(self, condition):
+</span><span class="hit">        self.query += f&#34;DONDE {condition} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">
+</span><span class="hit">    def mete_en(self, table, columns):
+</span><span class="hit">        self.query += f&#34;METE EN {table} ({&#39;, &#39;.join(columns)}) &#34;
+</span><span class="hit">        return self
+</span><span class="noop">
+</span><span class="hit">    def los_valores(self, values):
+</span><span class="hit">        formatted_values = &#39;, &#39;.join(f&#34;&#39;{v}&#39;&#34; if isinstance(v, str) else str(v) for v in values)
+</span><span class="hit">        self.query += f&#34;LOS VALORES ({formatted_values}) &#34;
+</span><span class="hit">        return self
+</span><span class="noop">
+</span><span class="hit">    def actualiza(self, table):
+</span><span class="hit">        self.query += f&#34;ACTUALIZA {table} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">
+</span><span class="hit">    def setea(self, assignments):
+</span><span class="hit">        assigns = &#39;, &#39;.join(f&#34;{k} = {v}&#34; for k, v in assignments.items())
+</span><span class="hit">        self.query += f&#34;SETEA {assigns} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">
+</span><span class="hit">    def borra_de_la(self, table):
+</span><span class="hit">        self.query += f&#34;BORRA DE LA TABLA {table} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">    
+</span><span class="hit">    def mezclando(self, table):
+</span><span class="hit">        self.query += f&#34;MEZCLANDO {table} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">    
+</span><span class="hit">    def en(self, join_condition):
+</span><span class="hit">        self.query += f&#34;EN {join_condition} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">    
+</span><span class="hit">    def agrupando_por(self, column):
+</span><span class="hit">        self.query += f&#34;AGRUPANDO POR {column} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">    
+</span><span class="hit">    def where_del_group_by(self, condition):
+</span><span class="hit">        self.query += f&#34;WHERE DEL GROUP BY {condition} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">    
+</span><span class="hit">    def agrega_columna(self, column):
+</span><span class="hit">        self.query += f&#34;AGREGA LA COLUMNA {column} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">    
+</span><span class="hit">    def cambia(self, table):
+</span><span class="hit">        self.query += f&#34;CAMBIA LA TABLA {table} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">    
+</span><span class="hit">    def elimina_columna(self, column):
+</span><span class="hit">        self.query += f&#34;ELIMINA LA COLUMNA {column} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">
+</span><span class="hit">    def build(self):
+</span><span class="hit">        return self.query.strip() + &#34;;&#34;
+</span></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h4 id="src/parsetab.py">src/parsetab.py</h4>
+<table class="code u-max-full-width">
+  <tbody>
+    <tr>
+      <td class="lineno">
+        <pre>1 &nbsp;
+2 &nbsp;
+3 &nbsp;
+4 &nbsp;
+5 &nbsp;
+6 &nbsp;
+7 &nbsp;
+8 &nbsp;
+9 &nbsp;
+10 &nbsp;
+11 &nbsp;
+12 &nbsp;
+13 &nbsp;
+14 &nbsp;
+15 &nbsp;
+16 &nbsp;
+17 &nbsp;
+18 &nbsp;
+19 &nbsp;
+20 &nbsp;
+21 &nbsp;
+22 &nbsp;
+23 &nbsp;
+24 &nbsp;
+25 &nbsp;
+26 &nbsp;
+27 &nbsp;
+28 &nbsp;
+29 &nbsp;
+30 &nbsp;
+31 &nbsp;
+32 &nbsp;
+33 &nbsp;
+34 &nbsp;
+35 &nbsp;
+36 &nbsp;
+37 &nbsp;
+38 &nbsp;
+39 &nbsp;
+40 &nbsp;
+41 &nbsp;
+42 &nbsp;
+43 &nbsp;
+44 &nbsp;
+45 &nbsp;
+46 &nbsp;
+47 &nbsp;
+48 &nbsp;
+49 &nbsp;
+50 &nbsp;
+51 &nbsp;
+52 &nbsp;
+53 &nbsp;
+54 &nbsp;
+55 &nbsp;
+56 &nbsp;
+57 &nbsp;
+58 &nbsp;
+59 &nbsp;
+60 &nbsp;
+61 &nbsp;
+62 &nbsp;
+63 &nbsp;
+64 &nbsp;
+65 &nbsp;
+66 &nbsp;
+67 &nbsp;
+68 &nbsp;
+69 &nbsp;
+70 &nbsp;
+71 &nbsp;
+72 &nbsp;
+73 &nbsp;
+74 &nbsp;
+75 &nbsp;
+</pre>
+      </td>
+      <td class="source">
+        <pre><span class="noop">
+</span><span class="noop"># parsetab.py
+</span><span class="noop"># This file is automatically generated. Do not edit.
+</span><span class="noop"># pylint: disable=W,C,R
+</span><span class="hit">_tabversion = &#39;3.10&#39;
+</span><span class="noop">
+</span><span class="hit">_lr_method = &#39;LALR&#39;
+</span><span class="noop">
+</span><span class="hit">_lr_signature = &#39;A ACTUALIZA AGREGA AGRUPANDO BORRA BY CAMBIA CLAVE COLUMNA COMMA COMO CONTANDO CREA CUENTA DATE DE DEFECTO DEL DISTINTOS DONDE DOT ELIMINA EN ENTRE ES ESTO ES_NULO EXISTE FLOAT GROUP IDENTIFIER INT LA LOS LPAREN METE MEZCLANDO MUCHO NO NULO NUMBER OPERATOR ORDENA PARECIDO POR PRIMA REFERENTE RPAREN SEMICOLON SETEA STRING TABLA TENIENDO TIRA TODO TRAEME TRANSFORMA UNICO VALORES VARCHAR WHERE Yusql_query : select_query\n                  | insert_query\n                  | update_query\n                  | delete_query\n                  | alter_queryselect_query : TRAEME selection DE LA TABLA IDENTIFIER group_by join condition SEMICOLONinsert_query : METE EN insertion LOS VALORES LPAREN value_list RPAREN SEMICOLONupdate_query : ACTUALIZA IDENTIFIER SETEA IDENTIFIER OPERATOR value condition SEMICOLONdelete_query : BORRA DE LA TABLA IDENTIFIER condition SEMICOLONalter_query : CAMBIA LA TABLA IDENTIFIER AGREGA LA COLUMNA column_data SEMICOLON\n                   | CAMBIA LA TABLA IDENTIFIER ELIMINA LA COLUMNA IDENTIFIER SEMICOLONcolumn_data : IDENTIFIER data_type constraints\n                   | IDENTIFIER data_typedata_type : VARCHAR LPAREN NUMBER RPAREN\n                 | INT\n                 | DATE\n                 | FLOATconstraints : NO NULO\n                   | UNICO\n                   | CLAVE PRIMAselection : TODO\n                 | CONTANDO LPAREN TODO RPAREN\n                 | LOS DISTINTOS IDENTIFIERjoin : empty\n            | MEZCLANDO IDENTIFIER EN IDENTIFIER DOT IDENTIFIER OPERATOR IDENTIFIER DOT IDENTIFIERgroup_by : empty\n                | AGRUPANDO POR IDENTIFIER grouping_conditiongrouping_condition : empty\n                         | WHERE DEL GROUP BY left_side_id OPERATOR valueleft_side_id : IDENTIFIER\n                    | IDENTIFIER LPAREN OPERATOR RPARENinsertion : IDENTIFIER\n                 | IDENTIFIER LPAREN column_list RPARENcolumn_list : IDENTIFIER\n                   | column_list COMMA IDENTIFIERvalue_list : value\n                  | value_list COMMA valuecondition : DONDE expression\n                 | emptyexpression : IDENTIFIER OPERATOR value\n                  | IDENTIFIER DOT IDENTIFIER OPERATOR value\n                  | IDENTIFIER ENTRE value Y valuevalue : NUMBER\n             | STRINGempty :&#39;
+</span><span class="noop">    
+</span><span class="hit">_lr_action_items = {&#39;TRAEME&#39;:([0,],[7,]),&#39;METE&#39;:([0,],[8,]),&#39;ACTUALIZA&#39;:([0,],[9,]),&#39;BORRA&#39;:([0,],[10,]),&#39;CAMBIA&#39;:([0,],[11,]),&#39;$end&#39;:([1,2,3,4,5,6,64,75,85,95,96,97,],[0,-1,-2,-3,-4,-5,-9,-8,-7,-10,-11,-6,]),&#39;TODO&#39;:([7,21,],[13,29,]),&#39;CONTANDO&#39;:([7,],[14,]),&#39;LOS&#39;:([7,23,24,47,],[15,31,-32,-33,]),&#39;EN&#39;:([8,83,],[16,98,]),&#39;IDENTIFIER&#39;:([9,16,22,25,27,32,34,36,48,53,67,68,71,72,77,98,116,120,121,127,],[17,24,30,33,35,39,42,45,62,66,79,81,83,84,88,109,119,123,124,130,]),&#39;DE&#39;:([10,12,13,30,37,],[18,20,-21,-23,-22,]),&#39;LA&#39;:([11,18,20,43,44,],[19,26,28,55,56,]),&#39;LPAREN&#39;:([14,24,38,91,123,],[21,32,46,108,126,]),&#39;DISTINTOS&#39;:([15,],[22,]),&#39;SETEA&#39;:([17,],[25,]),&#39;TABLA&#39;:([19,26,28,],[27,34,36,]),&#39;RPAREN&#39;:([29,39,40,50,51,60,61,62,86,115,129,],[37,-34,47,-43,-44,73,-36,-35,-37,118,131,]),&#39;VALORES&#39;:([31,],[38,]),&#39;OPERATOR&#39;:([33,66,88,119,122,123,126,131,],[41,76,102,121,125,-30,129,-31,]),&#39;AGREGA&#39;:([35,],[43,]),&#39;ELIMINA&#39;:([35,],[44,]),&#39;COMMA&#39;:([39,40,50,51,60,61,62,86,],[-34,48,-43,-44,74,-36,-35,-37,]),&#39;NUMBER&#39;:([41,46,74,76,78,102,103,108,125,],[50,50,50,50,50,50,50,115,50,]),&#39;STRING&#39;:([41,46,74,76,78,102,103,125,],[51,51,51,51,51,51,51,51,]),&#39;DONDE&#39;:([42,45,49,50,51,57,58,69,70,84,99,100,128,130,],[53,-45,53,-43,-44,-45,-26,53,-24,-45,-27,-28,-29,-25,]),&#39;SEMICOLON&#39;:([42,45,49,50,51,52,54,57,58,63,65,69,70,73,80,81,82,84,87,90,92,93,94,99,100,104,106,111,112,113,114,118,128,130,],[-45,-45,-45,-43,-44,64,-39,-45,-26,75,-38,-45,-24,85,95,96,97,-45,-40,-13,-15,-16,-17,-27,-28,-12,-19,-41,-42,-18,-20,-14,-29,-25,]),&#39;AGRUPANDO&#39;:([45,],[59,]),&#39;MEZCLANDO&#39;:([45,50,51,57,58,84,99,100,128,],[-45,-43,-44,71,-26,-45,-27,-28,-29,]),&#39;Y&#39;:([50,51,89,],[-43,-44,103,]),&#39;COLUMNA&#39;:([55,56,],[67,68,]),&#39;POR&#39;:([59,],[72,]),&#39;DOT&#39;:([66,109,124,],[77,116,127,]),&#39;ENTRE&#39;:([66,],[78,]),&#39;VARCHAR&#39;:([79,],[91,]),&#39;INT&#39;:([79,],[92,]),&#39;DATE&#39;:([79,],[93,]),&#39;FLOAT&#39;:([79,],[94,]),&#39;WHERE&#39;:([84,],[101,]),&#39;NO&#39;:([90,92,93,94,118,],[105,-15,-16,-17,-14,]),&#39;UNICO&#39;:([90,92,93,94,118,],[106,-15,-16,-17,-14,]),&#39;CLAVE&#39;:([90,92,93,94,118,],[107,-15,-16,-17,-14,]),&#39;DEL&#39;:([101,],[110,]),&#39;NULO&#39;:([105,],[113,]),&#39;PRIMA&#39;:([107,],[114,]),&#39;GROUP&#39;:([110,],[117,]),&#39;BY&#39;:([117,],[120,]),}
+</span><span class="noop">
+</span><span class="hit">_lr_action = {}
+</span><span class="hit">for _k, _v in _lr_action_items.items():
+</span><span class="hit">   for _x,_y in zip(_v[0],_v[1]):
+</span><span class="hit">      if not _x in _lr_action:  _lr_action[_x] = {}
+</span><span class="hit">      _lr_action[_x][_k] = _y
+</span><span class="hit">del _lr_action_items
+</span><span class="noop">
+</span><span class="hit">_lr_goto_items = {&#39;usql_query&#39;:([0,],[1,]),&#39;select_query&#39;:([0,],[2,]),&#39;insert_query&#39;:([0,],[3,]),&#39;update_query&#39;:([0,],[4,]),&#39;delete_query&#39;:([0,],[5,]),&#39;alter_query&#39;:([0,],[6,]),&#39;selection&#39;:([7,],[12,]),&#39;insertion&#39;:([16,],[23,]),&#39;column_list&#39;:([32,],[40,]),&#39;value&#39;:([41,46,74,76,78,102,103,125,],[49,61,86,87,89,111,112,128,]),&#39;condition&#39;:([42,49,69,],[52,63,82,]),&#39;empty&#39;:([42,45,49,57,69,84,],[54,58,54,70,54,100,]),&#39;group_by&#39;:([45,],[57,]),&#39;value_list&#39;:([46,],[60,]),&#39;expression&#39;:([53,],[65,]),&#39;join&#39;:([57,],[69,]),&#39;column_data&#39;:([67,],[80,]),&#39;data_type&#39;:([79,],[90,]),&#39;grouping_condition&#39;:([84,],[99,]),&#39;constraints&#39;:([90,],[104,]),&#39;left_side_id&#39;:([120,],[122,]),}
+</span><span class="noop">
+</span><span class="hit">_lr_goto = {}
+</span><span class="hit">for _k, _v in _lr_goto_items.items():
+</span><span class="hit">   for _x, _y in zip(_v[0], _v[1]):
+</span><span class="hit">       if not _x in _lr_goto: _lr_goto[_x] = {}
+</span><span class="hit">       _lr_goto[_x][_k] = _y
+</span><span class="hit">del _lr_goto_items
+</span><span class="hit">_lr_productions = [
+</span><span class="noop">  (&#34;S&#39; -&gt; usql_query&#34;,&#34;S&#39;&#34;,1,None,None,None),
+</span><span class="noop">  (&#39;usql_query -&gt; select_query&#39;,&#39;usql_query&#39;,1,&#39;p_usql_query&#39;,&#39;usql_parser.py&#39;,119),
+</span><span class="noop">  (&#39;usql_query -&gt; insert_query&#39;,&#39;usql_query&#39;,1,&#39;p_usql_query&#39;,&#39;usql_parser.py&#39;,120),
+</span><span class="noop">  (&#39;usql_query -&gt; update_query&#39;,&#39;usql_query&#39;,1,&#39;p_usql_query&#39;,&#39;usql_parser.py&#39;,121),
+</span><span class="noop">  (&#39;usql_query -&gt; delete_query&#39;,&#39;usql_query&#39;,1,&#39;p_usql_query&#39;,&#39;usql_parser.py&#39;,122),
+</span><span class="noop">  (&#39;usql_query -&gt; alter_query&#39;,&#39;usql_query&#39;,1,&#39;p_usql_query&#39;,&#39;usql_parser.py&#39;,123),
+</span><span class="noop">  (&#39;select_query -&gt; TRAEME selection DE LA TABLA IDENTIFIER group_by join condition SEMICOLON&#39;,&#39;select_query&#39;,10,&#39;p_select_query&#39;,&#39;usql_parser.py&#39;,127),
+</span><span class="noop">  (&#39;insert_query -&gt; METE EN insertion LOS VALORES LPAREN value_list RPAREN SEMICOLON&#39;,&#39;insert_query&#39;,9,&#39;p_insert_query&#39;,&#39;usql_parser.py&#39;,132),
+</span><span class="noop">  (&#39;update_query -&gt; ACTUALIZA IDENTIFIER SETEA IDENTIFIER OPERATOR value condition SEMICOLON&#39;,&#39;update_query&#39;,8,&#39;p_update_query&#39;,&#39;usql_parser.py&#39;,136),
+</span><span class="noop">  (&#39;delete_query -&gt; BORRA DE LA TABLA IDENTIFIER condition SEMICOLON&#39;,&#39;delete_query&#39;,7,&#39;p_delete_query&#39;,&#39;usql_parser.py&#39;,140),
+</span><span class="noop">  (&#39;alter_query -&gt; CAMBIA LA TABLA IDENTIFIER AGREGA LA COLUMNA column_data SEMICOLON&#39;,&#39;alter_query&#39;,9,&#39;p_alter_query&#39;,&#39;usql_parser.py&#39;,144),
+</span><span class="noop">  (&#39;alter_query -&gt; CAMBIA LA TABLA IDENTIFIER ELIMINA LA COLUMNA IDENTIFIER SEMICOLON&#39;,&#39;alter_query&#39;,9,&#39;p_alter_query&#39;,&#39;usql_parser.py&#39;,145),
+</span><span class="noop">  (&#39;column_data -&gt; IDENTIFIER data_type constraints&#39;,&#39;column_data&#39;,3,&#39;p_column_data&#39;,&#39;usql_parser.py&#39;,152),
+</span><span class="noop">  (&#39;column_data -&gt; IDENTIFIER data_type&#39;,&#39;column_data&#39;,2,&#39;p_column_data&#39;,&#39;usql_parser.py&#39;,153),
+</span><span class="noop">  (&#39;data_type -&gt; VARCHAR LPAREN NUMBER RPAREN&#39;,&#39;data_type&#39;,4,&#39;p_data_type&#39;,&#39;usql_parser.py&#39;,157),
+</span><span class="noop">  (&#39;data_type -&gt; INT&#39;,&#39;data_type&#39;,1,&#39;p_data_type&#39;,&#39;usql_parser.py&#39;,158),
+</span><span class="noop">  (&#39;data_type -&gt; DATE&#39;,&#39;data_type&#39;,1,&#39;p_data_type&#39;,&#39;usql_parser.py&#39;,159),
+</span><span class="noop">  (&#39;data_type -&gt; FLOAT&#39;,&#39;data_type&#39;,1,&#39;p_data_type&#39;,&#39;usql_parser.py&#39;,160),
+</span><span class="noop">  (&#39;constraints -&gt; NO NULO&#39;,&#39;constraints&#39;,2,&#39;p_constraints&#39;,&#39;usql_parser.py&#39;,164),
+</span><span class="noop">  (&#39;constraints -&gt; UNICO&#39;,&#39;constraints&#39;,1,&#39;p_constraints&#39;,&#39;usql_parser.py&#39;,165),
+</span><span class="noop">  (&#39;constraints -&gt; CLAVE PRIMA&#39;,&#39;constraints&#39;,2,&#39;p_constraints&#39;,&#39;usql_parser.py&#39;,166),
+</span><span class="noop">  (&#39;selection -&gt; TODO&#39;,&#39;selection&#39;,1,&#39;p_selection&#39;,&#39;usql_parser.py&#39;,176),
+</span><span class="noop">  (&#39;selection -&gt; CONTANDO LPAREN TODO RPAREN&#39;,&#39;selection&#39;,4,&#39;p_selection&#39;,&#39;usql_parser.py&#39;,177),
+</span><span class="noop">  (&#39;selection -&gt; LOS DISTINTOS IDENTIFIER&#39;,&#39;selection&#39;,3,&#39;p_selection&#39;,&#39;usql_parser.py&#39;,178),
+</span><span class="noop">  (&#39;join -&gt; empty&#39;,&#39;join&#39;,1,&#39;p_join&#39;,&#39;usql_parser.py&#39;,190),
+</span><span class="noop">  (&#39;join -&gt; MEZCLANDO IDENTIFIER EN IDENTIFIER DOT IDENTIFIER OPERATOR IDENTIFIER DOT IDENTIFIER&#39;,&#39;join&#39;,10,&#39;p_join&#39;,&#39;usql_parser.py&#39;,191),
+</span><span class="noop">  (&#39;group_by -&gt; empty&#39;,&#39;group_by&#39;,1,&#39;p_group_by&#39;,&#39;usql_parser.py&#39;,195),
+</span><span class="noop">  (&#39;group_by -&gt; AGRUPANDO POR IDENTIFIER grouping_condition&#39;,&#39;group_by&#39;,4,&#39;p_group_by&#39;,&#39;usql_parser.py&#39;,196),
+</span><span class="noop">  (&#39;grouping_condition -&gt; empty&#39;,&#39;grouping_condition&#39;,1,&#39;p_grouping_condition&#39;,&#39;usql_parser.py&#39;,200),
+</span><span class="noop">  (&#39;grouping_condition -&gt; WHERE DEL GROUP BY left_side_id OPERATOR value&#39;,&#39;grouping_condition&#39;,7,&#39;p_grouping_condition&#39;,&#39;usql_parser.py&#39;,201),
+</span><span class="noop">  (&#39;left_side_id -&gt; IDENTIFIER&#39;,&#39;left_side_id&#39;,1,&#39;p_left_side_id&#39;,&#39;usql_parser.py&#39;,205),
+</span><span class="noop">  (&#39;left_side_id -&gt; IDENTIFIER LPAREN OPERATOR RPAREN&#39;,&#39;left_side_id&#39;,4,&#39;p_left_side_id&#39;,&#39;usql_parser.py&#39;,206),
+</span><span class="noop">  (&#39;insertion -&gt; IDENTIFIER&#39;,&#39;insertion&#39;,1,&#39;p_insertion&#39;,&#39;usql_parser.py&#39;,210),
+</span><span class="noop">  (&#39;insertion -&gt; IDENTIFIER LPAREN column_list RPAREN&#39;,&#39;insertion&#39;,4,&#39;p_insertion&#39;,&#39;usql_parser.py&#39;,211),
+</span><span class="noop">  (&#39;column_list -&gt; IDENTIFIER&#39;,&#39;column_list&#39;,1,&#39;p_column_list&#39;,&#39;usql_parser.py&#39;,215),
+</span><span class="noop">  (&#39;column_list -&gt; column_list COMMA IDENTIFIER&#39;,&#39;column_list&#39;,3,&#39;p_column_list&#39;,&#39;usql_parser.py&#39;,216),
+</span><span class="noop">  (&#39;value_list -&gt; value&#39;,&#39;value_list&#39;,1,&#39;p_value_list&#39;,&#39;usql_parser.py&#39;,220),
+</span><span class="noop">  (&#39;value_list -&gt; value_list COMMA value&#39;,&#39;value_list&#39;,3,&#39;p_value_list&#39;,&#39;usql_parser.py&#39;,221),
+</span><span class="noop">  (&#39;condition -&gt; DONDE expression&#39;,&#39;condition&#39;,2,&#39;p_condition&#39;,&#39;usql_parser.py&#39;,225),
+</span><span class="noop">  (&#39;condition -&gt; empty&#39;,&#39;condition&#39;,1,&#39;p_condition&#39;,&#39;usql_parser.py&#39;,226),
+</span><span class="noop">  (&#39;expression -&gt; IDENTIFIER OPERATOR value&#39;,&#39;expression&#39;,3,&#39;p_expression&#39;,&#39;usql_parser.py&#39;,230),
+</span><span class="noop">  (&#39;expression -&gt; IDENTIFIER DOT IDENTIFIER OPERATOR value&#39;,&#39;expression&#39;,5,&#39;p_expression&#39;,&#39;usql_parser.py&#39;,231),
+</span><span class="noop">  (&#39;expression -&gt; IDENTIFIER ENTRE value Y value&#39;,&#39;expression&#39;,5,&#39;p_expression&#39;,&#39;usql_parser.py&#39;,232),
+</span><span class="noop">  (&#39;value -&gt; NUMBER&#39;,&#39;value&#39;,1,&#39;p_value&#39;,&#39;usql_parser.py&#39;,241),
+</span><span class="noop">  (&#39;value -&gt; STRING&#39;,&#39;value&#39;,1,&#39;p_value&#39;,&#39;usql_parser.py&#39;,242),
+</span><span class="noop">  (&#39;empty -&gt; &lt;empty&gt;&#39;,&#39;empty&#39;,0,&#39;p_empty&#39;,&#39;usql_parser.py&#39;,246),
+</span><span class="noop">]
+</span></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h4 id="src/usql_parser.py">src/usql_parser.py</h4>
+<table class="code u-max-full-width">
+  <tbody>
+    <tr>
+      <td class="lineno">
+        <pre>1 &nbsp;
+2 &nbsp;
+3 &nbsp;
+4 &nbsp;
+5 &nbsp;
+6 &nbsp;
+7 &nbsp;
+8 &nbsp;
+9 &nbsp;
+10 &nbsp;
+11 &nbsp;
+12 &nbsp;
+13 &nbsp;
+14 &nbsp;
+15 &nbsp;
+16 &nbsp;
+17 &nbsp;
+18 &nbsp;
+19 &nbsp;
+20 &nbsp;
+21 &nbsp;
+22 &nbsp;
+23 &nbsp;
+24 &nbsp;
+25 &nbsp;
+26 &nbsp;
+27 &nbsp;
+28 &nbsp;
+29 &nbsp;
+30 &nbsp;
+31 &nbsp;
+32 &nbsp;
+33 &nbsp;
+34 &nbsp;
+35 &nbsp;
+36 &nbsp;
+37 &nbsp;
+38 &nbsp;
+39 &nbsp;
+40 &nbsp;
+41 &nbsp;
+42 &nbsp;
+43 &nbsp;
+44 &nbsp;
+45 &nbsp;
+46 &nbsp;
+47 &nbsp;
+48 &nbsp;
+49 &nbsp;
+50 &nbsp;
+51 &nbsp;
+52 &nbsp;
+53 &nbsp;
+54 &nbsp;
+55 &nbsp;
+56 &nbsp;
+57 &nbsp;
+58 &nbsp;
+59 &nbsp;
+60 &nbsp;
+61 &nbsp;
+62 &nbsp;
+63 &nbsp;
+64 &nbsp;
+65 &nbsp;
+66 &nbsp;
+67 &nbsp;
+68 &nbsp;
+69 &nbsp;
+70 &nbsp;
+71 &nbsp;
+72 &nbsp;
+73 &nbsp;
+74 &nbsp;
+75 &nbsp;
+76 &nbsp;
+77 &nbsp;
+78 &nbsp;
+79 &nbsp;
+80 &nbsp;
+81 &nbsp;
+82 &nbsp;
+83 &nbsp;
+84 &nbsp;
+85 &nbsp;
+86 &nbsp;
+87 &nbsp;
+88 &nbsp;
+89 &nbsp;
+90 &nbsp;
+91 &nbsp;
+92 &nbsp;
+93 &nbsp;
+94 &nbsp;
+95 &nbsp;
+96 &nbsp;
+97 &nbsp;
+98 &nbsp;
+99 &nbsp;
+100 &nbsp;
+101 &nbsp;
+102 &nbsp;
+103 &nbsp;
+104 &nbsp;
+105 &nbsp;
+106 &nbsp;
+107 &nbsp;
+108 &nbsp;
+109 &nbsp;
+110 &nbsp;
+111 &nbsp;
+112 &nbsp;
+113 &nbsp;
+114 &nbsp;
+115 &nbsp;
+116 &nbsp;
+117 &nbsp;
+118 &nbsp;
+119 &nbsp;
+120 &nbsp;
+121 &nbsp;
+122 &nbsp;
+123 &nbsp;
+124 &nbsp;
+125 &nbsp;
+126 &nbsp;
+127 &nbsp;
+128 &nbsp;
+129 &nbsp;
+130 &nbsp;
+131 &nbsp;
+132 &nbsp;
+133 &nbsp;
+134 &nbsp;
+135 &nbsp;
+136 &nbsp;
+137 &nbsp;
+138 &nbsp;
+139 &nbsp;
+140 &nbsp;
+141 &nbsp;
+142 &nbsp;
+143 &nbsp;
+144 &nbsp;
+145 &nbsp;
+146 &nbsp;
+147 &nbsp;
+148 &nbsp;
+149 &nbsp;
+150 &nbsp;
+151 &nbsp;
+152 &nbsp;
+153 &nbsp;
+154 &nbsp;
+155 &nbsp;
+156 &nbsp;
+157 &nbsp;
+158 &nbsp;
+159 &nbsp;
+160 &nbsp;
+161 &nbsp;
+162 &nbsp;
+163 &nbsp;
+164 &nbsp;
+165 &nbsp;
+166 &nbsp;
+167 &nbsp;
+168 &nbsp;
+169 &nbsp;
+170 &nbsp;
+171 &nbsp;
+172 &nbsp;
+173 &nbsp;
+174 &nbsp;
+175 &nbsp;
+176 &nbsp;
+177 &nbsp;
+178 &nbsp;
+179 &nbsp;
+180 &nbsp;
+181 &nbsp;
+182 &nbsp;
+183 &nbsp;
+184 &nbsp;
+185 &nbsp;
+186 &nbsp;
+187 &nbsp;
+188 &nbsp;
+189 &nbsp;
+190 &nbsp;
+191 &nbsp;
+192 &nbsp;
+193 &nbsp;
+194 &nbsp;
+195 &nbsp;
+196 &nbsp;
+197 &nbsp;
+198 &nbsp;
+199 &nbsp;
+200 &nbsp;
+201 &nbsp;
+202 &nbsp;
+203 &nbsp;
+204 &nbsp;
+205 &nbsp;
+206 &nbsp;
+207 &nbsp;
+208 &nbsp;
+209 &nbsp;
+210 &nbsp;
+211 &nbsp;
+212 &nbsp;
+213 &nbsp;
+214 &nbsp;
+215 &nbsp;
+216 &nbsp;
+217 &nbsp;
+218 &nbsp;
+219 &nbsp;
+220 &nbsp;
+221 &nbsp;
+222 &nbsp;
+223 &nbsp;
+224 &nbsp;
+225 &nbsp;
+226 &nbsp;
+227 &nbsp;
+228 &nbsp;
+229 &nbsp;
+230 &nbsp;
+231 &nbsp;
+232 &nbsp;
+233 &nbsp;
+234 &nbsp;
+235 &nbsp;
+236 &nbsp;
+237 &nbsp;
+238 &nbsp;
+239 &nbsp;
+240 &nbsp;
+241 &nbsp;
+242 &nbsp;
+243 &nbsp;
+244 &nbsp;
+245 &nbsp;
+</pre>
+      </td>
+      <td class="source">
+        <pre><span class="noop"># usql_parser.py
+</span><span class="noop"># Este módulo utiliza PLY para implementar el DSL que traduce entre USQL y SQL.
+</span><span class="noop">
+</span><span class="hit">import ply.lex as lex
+</span><span class="hit">import ply.yacc as yacc
+</span><span class="noop">
+</span><span class="noop"># Lista de tokens
+</span><span class="hit">tokens = (
+</span><span class="noop">    &#39;IDENTIFIER&#39;,
+</span><span class="noop">    &#39;NUMBER&#39;,
+</span><span class="noop">    &#39;STRING&#39;,
+</span><span class="noop">    &#39;OPERATOR&#39;,
+</span><span class="noop">    &#39;SEMICOLON&#39;,
+</span><span class="noop">    &#39;LPAREN&#39;,
+</span><span class="noop">    &#39;RPAREN&#39;,
+</span><span class="noop">    &#39;COMMA&#39;,
+</span><span class="noop">    &#39;DOT&#39;,
+</span><span class="noop">)
+</span><span class="noop">
+</span><span class="noop"># Palabras reservadas
+</span><span class="hit">reserved = {
+</span><span class="noop">    &#39;TRAEME&#39;: &#39;TRAEME&#39;,
+</span><span class="noop">    &#39;TODO&#39;: &#39;TODO&#39;,
+</span><span class="noop">    &#39;DE&#39;: &#39;DE&#39;,
+</span><span class="noop">    &#39;LA&#39;: &#39;LA&#39;,
+</span><span class="noop">    &#39;TABLA&#39;: &#39;TABLA&#39;,
+</span><span class="noop">    &#39;DONDE&#39;: &#39;DONDE&#39;,
+</span><span class="noop">    &#39;AGRUPANDO&#39;: &#39;AGRUPANDO&#39;,
+</span><span class="noop">    &#39;POR&#39;: &#39;POR&#39;,
+</span><span class="noop">    &#39;MEZCLANDO&#39;: &#39;MEZCLANDO&#39;,
+</span><span class="noop">    &#39;EN&#39;: &#39;EN&#39;,
+</span><span class="noop">    &#39;LOS&#39;: &#39;LOS&#39;,
+</span><span class="noop">    &#39;DISTINTOS&#39;: &#39;DISTINTOS&#39;,
+</span><span class="noop">    &#39;CONTANDO&#39;: &#39;CONTANDO&#39;,
+</span><span class="noop">    &#39;METE&#39;: &#39;METE&#39;,
+</span><span class="noop">    &#39;VALORES&#39;: &#39;VALORES&#39;,
+</span><span class="noop">    &#39;ACTUALIZA&#39;: &#39;ACTUALIZA&#39;,
+</span><span class="noop">    &#39;SETEA&#39;: &#39;SETEA&#39;,
+</span><span class="noop">    &#39;BORRA&#39;: &#39;BORRA&#39;,
+</span><span class="noop">    &#39;ORDENA&#39;: &#39;ORDENA&#39;,
+</span><span class="noop">    &#39;POR&#39;: &#39;POR&#39;,
+</span><span class="noop">    &#39;COMO&#39;: &#39;COMO&#39;,
+</span><span class="noop">    &#39;MUCHO&#39;: &#39;MUCHO&#39;,
+</span><span class="noop">    &#39;TENIENDO&#39;: &#39;TENIENDO&#39;,
+</span><span class="noop">    &#39;CUENTA&#39;: &#39;CUENTA&#39;,
+</span><span class="noop">    &#39;EXISTE&#39;: &#39;EXISTE&#39;,
+</span><span class="noop">    &#39;ESTO&#39;: &#39;ESTO&#39;,
+</span><span class="noop">    &#39;ENTRE&#39;: &#39;ENTRE&#39;,
+</span><span class="noop">    &#39;PARECIDO&#39;: &#39;PARECIDO&#39;,
+</span><span class="noop">    &#39;A&#39;: &#39;A&#39;,
+</span><span class="noop">    &#39;ES NULO&#39;: &#39;ES_NULO&#39;,
+</span><span class="noop">    &#39;ES&#39;: &#39;ES&#39;,
+</span><span class="noop">    &#39;NULO&#39;: &#39;NULO&#39;,
+</span><span class="noop">    &#39;CAMBIA&#39;: &#39;CAMBIA&#39;,
+</span><span class="noop">    &#39;AGREGA&#39;: &#39;AGREGA&#39;,
+</span><span class="noop">    &#39;COLUMNA&#39;: &#39;COLUMNA&#39;,
+</span><span class="noop">    &#39;ELIMINA&#39;: &#39;ELIMINA&#39;,
+</span><span class="noop">    &#39;CREA&#39;: &#39;CREA&#39;,
+</span><span class="noop">    &#39;TIRA&#39;: &#39;TIRA&#39;,
+</span><span class="noop">    &#39;DEFECTO&#39;: &#39;DEFECTO&#39;,
+</span><span class="noop">    &#39;UNICO&#39;: &#39;UNICO&#39;,
+</span><span class="noop">    &#39;CLAVE&#39;: &#39;CLAVE&#39;,
+</span><span class="noop">    &#39;PRIMA&#39;: &#39;PRIMA&#39;,
+</span><span class="noop">    &#39;REFERENTE&#39;: &#39;REFERENTE&#39;,
+</span><span class="noop">    &#39;NO&#39;: &#39;NO&#39;,
+</span><span class="noop">    &#39;TRANSFORMA&#39;: &#39;TRANSFORMA&#39;,
+</span><span class="noop">    &#39;Y&#39;: &#39;Y&#39;,
+</span><span class="noop">    &#39;VARCHAR&#39;: &#39;VARCHAR&#39;,
+</span><span class="noop">    &#39;INT&#39;: &#39;INT&#39;,
+</span><span class="noop">    &#39;DATE&#39;: &#39;DATE&#39;,
+</span><span class="noop">    &#39;FLOAT&#39;: &#39;FLOAT&#39;,
+</span><span class="noop">    &#39;WHERE&#39;: &#39;WHERE&#39;,
+</span><span class="noop">    &#39;DEL&#39;: &#39;DEL&#39;,
+</span><span class="noop">    &#39;GROUP&#39;: &#39;GROUP&#39;,
+</span><span class="noop">    &#39;BY&#39;: &#39;BY&#39;,
+</span><span class="noop">}
+</span><span class="noop">
+</span><span class="hit">tokens += tuple(reserved.values())
+</span><span class="noop">
+</span><span class="noop">#Pueden tener puntos y guiones bajos
+</span><span class="hit">def t_IDENTIFIER(t):
+</span><span class="noop">    r&#39;[a-zA-Z_][a-zA-Z_0-9]*&#39;
+</span><span class="hit">    t.type = reserved.get(t.value.upper(), &#39;IDENTIFIER&#39;)
+</span><span class="hit">    return t
+</span><span class="noop">
+</span><span class="noop"># Expresiones regulares para tokens simples
+</span><span class="hit">t_SEMICOLON = r&#39;;&#39;
+</span><span class="hit">t_OPERATOR = r&#39;[\+\-\*/&lt;&gt;]=?|=&#39;
+</span><span class="hit">t_LPAREN = r&#39;\(&#39;
+</span><span class="hit">t_RPAREN = r&#39;\)&#39;
+</span><span class="hit">t_COMMA = r&#39;,&#39;
+</span><span class="hit">t_DOT = r&#39;\.&#39;
+</span><span class="noop">
+</span><span class="noop"># Ignorar espacios en blanco
+</span><span class="hit">t_ignore = &#39; \t&#39;
+</span><span class="noop">
+</span><span class="noop">
+</span><span class="hit">def t_STRING(t):
+</span><span class="noop">    r&#39;\&#39;(.*?)\&#39;&#39;
+</span><span class="hit">    return t
+</span><span class="noop">
+</span><span class="hit">def t_NUMBER(t):
+</span><span class="noop">    r&#39;\d+&#39;
+</span><span class="hit">    return t
+</span><span class="noop">
+</span><span class="hit">def t_error(t):
+</span><span class="miss">    print(f&#34;Caracter ilegal &#39;{t.value[0]}&#39;&#34;)
+</span><span class="miss">    t.lexer.skip(1)
+</span><span class="noop">
+</span><span class="hit">lexer = lex.lex()
+</span><span class="noop">
+</span><span class="noop"># Definición de la gramática
+</span><span class="hit">def p_usql_query(p):
+</span><span class="noop">    &#39;&#39;&#39;usql_query : select_query
+</span><span class="noop">                  | insert_query
+</span><span class="noop">                  | update_query
+</span><span class="noop">                  | delete_query
+</span><span class="noop">                  | alter_query&#39;&#39;&#39;
+</span><span class="hit">    p[0] = p[1]
+</span><span class="noop">
+</span><span class="hit">def p_select_query(p):
+</span><span class="noop">    &#39;select_query : TRAEME selection DE LA TABLA IDENTIFIER group_by join condition SEMICOLON&#39;
+</span><span class="hit">    p[0] = f&#39;SELECT {p[2]} FROM {p[6]}{p[7]}{p[8]}{p[9]};&#39;
+</span><span class="noop">
+</span><span class="noop">
+</span><span class="hit">def p_insert_query(p):
+</span><span class="noop">    &#39;insert_query : METE EN insertion LOS VALORES LPAREN value_list RPAREN SEMICOLON&#39;
+</span><span class="hit">    p[0] = f&#39;INSERT INTO {p[3]} VALUES ({p[7]});&#39;
+</span><span class="noop">
+</span><span class="hit">def p_update_query(p):
+</span><span class="noop">    &#39;update_query : ACTUALIZA IDENTIFIER SETEA IDENTIFIER OPERATOR value condition SEMICOLON&#39;
+</span><span class="hit">    p[0] = f&#39;UPDATE {p[2]} SET {p[4]} {p[5]} {p[6]}{p[7]};&#39;
+</span><span class="noop">
+</span><span class="hit">def p_delete_query(p):
+</span><span class="noop">    &#39;delete_query : BORRA DE LA TABLA IDENTIFIER condition SEMICOLON&#39;
+</span><span class="hit">    p[0] = f&#39;DELETE FROM {p[5]}{p[6]};&#39;
+</span><span class="noop">
+</span><span class="hit">def p_alter_query(p):
+</span><span class="noop">    &#39;&#39;&#39;alter_query : CAMBIA LA TABLA IDENTIFIER AGREGA LA COLUMNA column_data SEMICOLON
+</span><span class="noop">                   | CAMBIA LA TABLA IDENTIFIER ELIMINA LA COLUMNA IDENTIFIER SEMICOLON&#39;&#39;&#39;
+</span><span class="hit">    if p[5] == &#39;AGREGA&#39;:
+</span><span class="hit">        p[0] = f&#39;ALTER TABLE {p[4]} ADD COLUMN {p[8]};&#39;
+</span><span class="hit">    elif p[5] == &#39;ELIMINA&#39;:
+</span><span class="hit">        p[0] = f&#39;ALTER TABLE {p[4]} DROP COLUMN {p[8]};&#39;
+</span><span class="noop">
+</span><span class="hit">def p_column_data(p):
+</span><span class="noop">    &#39;&#39;&#39;column_data : IDENTIFIER data_type constraints
+</span><span class="noop">                   | IDENTIFIER data_type&#39;&#39;&#39;
+</span><span class="hit">    p[0] = f&#39;{p[1]} {p[2]} {p[3]}&#39; if len(p) &gt; 3 else f&#39;{p[1]} {p[2]}&#39;
+</span><span class="noop">
+</span><span class="hit">def p_data_type(p):
+</span><span class="noop">    &#39;&#39;&#39;data_type : VARCHAR LPAREN NUMBER RPAREN
+</span><span class="noop">                 | INT
+</span><span class="noop">                 | DATE
+</span><span class="noop">                 | FLOAT&#39;&#39;&#39;
+</span><span class="hit">    p[0] = f&#39;{p[1]}{p[2]}{p[3]}{p[4]}&#39; if len(p) &gt; 2 else p[1]
+</span><span class="noop">
+</span><span class="hit">def p_constraints(p):
+</span><span class="noop">    &#39;&#39;&#39;constraints : NO NULO
+</span><span class="noop">                   | UNICO
+</span><span class="noop">                   | CLAVE PRIMA&#39;&#39;&#39;
+</span><span class="hit">    if p[2] == &#39;NULO&#39;:
+</span><span class="hit">        p[0] = &#39;NOT NULL&#39;
+</span><span class="miss">    elif p[1] == &#39;UNICO&#39;:
+</span><span class="miss">        p[0] = &#39;UNIQUE&#39;
+</span><span class="miss">    elif p[1] == &#39;CLAVE&#39;:
+</span><span class="miss">        p[0] = &#39;PRIMARY KEY&#39;
+</span><span class="noop">
+</span><span class="noop">
+</span><span class="hit">def p_selection(p):
+</span><span class="noop">    &#39;&#39;&#39;selection : TODO
+</span><span class="noop">                 | CONTANDO LPAREN TODO RPAREN
+</span><span class="noop">                 | LOS DISTINTOS IDENTIFIER&#39;&#39;&#39;
+</span><span class="noop">    
+</span><span class="hit">    if p[1] == &#39;TODO&#39;:
+</span><span class="hit">        p[0] = &#39;*&#39;
+</span><span class="hit">    elif p[1] == &#39;LOS&#39; and p[2] == &#39;DISTINTOS&#39;:
+</span><span class="hit">        p[0] = f&#39;DISTINCT {p[3]}&#39;
+</span><span class="hit">    elif p[1] == &#39;CONTANDO&#39;:
+</span><span class="hit">        p[0] = f&#39;COUNT(*)&#39;
+</span><span class="noop">
+</span><span class="hit">def p_join(p):
+</span><span class="noop">    &#39;&#39;&#39;join : empty
+</span><span class="noop">            | MEZCLANDO IDENTIFIER EN IDENTIFIER DOT IDENTIFIER OPERATOR IDENTIFIER DOT IDENTIFIER&#39;&#39;&#39;
+</span><span class="hit">    p[0] = f&#39; JOIN {p[2]} ON {p[4]}.{p[6]} {p[7]} {p[8]}.{p[10]}&#39; if len(p) &gt; 2 else &#39;&#39;
+</span><span class="noop">
+</span><span class="hit">def p_group_by(p):
+</span><span class="noop">    &#39;&#39;&#39;group_by : empty
+</span><span class="noop">                | AGRUPANDO POR IDENTIFIER grouping_condition&#39;&#39;&#39;
+</span><span class="hit">    p[0] = f&#39; GROUP BY {p[3]} {p[4]}&#39; if len(p) &gt; 2 else p[1]
+</span><span class="noop">
+</span><span class="hit">def p_grouping_condition(p):
+</span><span class="noop">    &#39;&#39;&#39;grouping_condition : empty
+</span><span class="noop">                         | WHERE DEL GROUP BY left_side_id OPERATOR value&#39;&#39;&#39;
+</span><span class="hit">    p[0] = f&#39;HAVING {p[5]} {p[6]} {p[7]}&#39; if len(p) &gt; 2 else p[1]
+</span><span class="noop">
+</span><span class="hit">def p_left_side_id(p):
+</span><span class="noop">    &#39;&#39;&#39;left_side_id : IDENTIFIER
+</span><span class="noop">                    | IDENTIFIER LPAREN OPERATOR RPAREN&#39;&#39;&#39;
+</span><span class="hit">    p[0] = p[1] if len(p) == 2 else f&#39;COUNT(*)&#39;
+</span><span class="noop">
+</span><span class="hit">def p_insertion(p):
+</span><span class="noop">    &#39;&#39;&#39;insertion : IDENTIFIER
+</span><span class="noop">                 | IDENTIFIER LPAREN column_list RPAREN&#39;&#39;&#39;
+</span><span class="hit">    p[0] = p[1] if len(p) == 2 else f&#39;{p[1]} ({p[3]})&#39;
+</span><span class="noop">
+</span><span class="hit">def p_column_list(p):
+</span><span class="noop">    &#39;&#39;&#39;column_list : IDENTIFIER
+</span><span class="noop">                   | column_list COMMA IDENTIFIER&#39;&#39;&#39;
+</span><span class="hit">    p[0] = p[1] if len(p) == 2 else f&#39;{p[1]}, {p[3]}&#39;
+</span><span class="noop">
+</span><span class="hit">def p_value_list(p):
+</span><span class="noop">    &#39;&#39;&#39;value_list : value
+</span><span class="noop">                  | value_list COMMA value&#39;&#39;&#39;
+</span><span class="hit">    p[0] = p[1] if len(p) == 2 else f&#39;{p[1]}, {p[3]}&#39;
+</span><span class="noop">
+</span><span class="hit">def p_condition(p):
+</span><span class="noop">    &#39;&#39;&#39;condition : DONDE expression
+</span><span class="noop">                 | empty&#39;&#39;&#39;
+</span><span class="hit">    p[0] = f&#39; WHERE {p[2]}&#39; if len(p) &gt; 2 else p[1]
+</span><span class="noop">
+</span><span class="hit">def p_expression(p):
+</span><span class="noop">    &#39;&#39;&#39;expression : IDENTIFIER OPERATOR value
+</span><span class="noop">                  | IDENTIFIER DOT IDENTIFIER OPERATOR value
+</span><span class="noop">                  | IDENTIFIER ENTRE value Y value&#39;&#39;&#39;
+</span><span class="hit">    if len(p) == 4:
+</span><span class="hit">        p[0] = f&#39;{p[1]} {p[2]} {p[3]}&#39;
+</span><span class="hit">    elif len(p) == 6 and p[2] == &#39;.&#39;:
+</span><span class="hit">        p[0] = f&#39;{p[1]}.{p[3]} {p[4]} {p[5]}&#39;
+</span><span class="hit">    elif len(p) == 6 and p[2] == &#39;ENTRE&#39;:
+</span><span class="hit">        p[0] = f&#39;{p[1]} BETWEEN {p[3]} AND {p[5]}&#39;
+</span><span class="noop">
+</span><span class="hit">def p_value(p):
+</span><span class="noop">    &#39;&#39;&#39;value : NUMBER
+</span><span class="noop">             | STRING&#39;&#39;&#39;
+</span><span class="hit">    p[0] = p[1]
+</span><span class="noop">
+</span><span class="hit">def p_empty(p):
+</span><span class="noop">    &#39;empty :&#39;
+</span><span class="hit">    p[0] = &#39;&#39;
+</span><span class="noop">
+</span><span class="hit">def p_error(p):
+</span><span class="hit">    raise SyntaxError(f&#39;Syntax error at token {p.type}&#39;)
+</span><span class="noop">
+</span><span class="hit">parser = yacc.yacc()</span></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+  </body>
+</html>
