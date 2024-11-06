@@ -6,7 +6,7 @@ pipeline {
                 git url: 'https://github.com/BrunooRamos/prog_av_e3.git', branch: 'main'
             }
         }
-        stage('Ejecuta Pruebas') {
+        stage('Ejecutas Pruebas') {
             steps {
                 sh '/usr/bin/python3 -m unittest discover -s test'
             }
