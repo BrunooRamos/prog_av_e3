@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clonar Repositorio') {
             steps {
-                git url: 'https://github.com/BrunooRamos/prog_av_e2.git', branch: 'main'
+                git url: 'https://github.com/BrunooRamos/prog_av_e3.git', branch: 'main'
             }
         }
         stage('Ejecutar Pruebas') {
