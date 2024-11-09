@@ -9,7 +9,6 @@ pipeline {
         stage('Instalar Dependencias') {
             steps {
                 sh '/usr/bin/python3 -m pip install ply'
-                sh '/usr/bin/python3 -m pip install sqlite3'
             }
         }
         stage('Ejecutas Pruebas') {
