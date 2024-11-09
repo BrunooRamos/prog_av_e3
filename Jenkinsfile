@@ -15,9 +15,9 @@ pipeline {
             steps {
                 sh 'sudo mkdir -p /opt/docs && sudo chmod 777 /opt/docs'
                 
-                sh 'cd src && python3 -m pydoc -w main'
+                sh 'cd src && python3 -m pydoc -w fluent_api'
                 
-                sh 'sudo mv src/main.html /var/www/html/documentins/delivery-sys.html'
+                sh 'sudo mv src/fluent_api.html /var/www/html/documentins/delivery-sys.html'
             }
         }
     }
