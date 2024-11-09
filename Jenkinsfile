@@ -6,6 +6,12 @@ pipeline {
                 git url: 'https://github.com/BrunooRamos/prog_av_e3.git', branch: 'main'
             }
         }
+        stage('Instalar Dependencias') {
+            steps {
+                sh '/usr/bin/python3 -m pip install ply'
+                sh '/usr/bin/python3 -m pip install sqlite3'
+            }
+        }
         stage('Ejecutas Pruebas') {
             steps {
                 sh '/usr/bin/python3 -m unittest discover -s test'
