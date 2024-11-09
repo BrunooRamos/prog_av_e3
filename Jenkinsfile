@@ -22,7 +22,7 @@ pipeline {
                 
                 sh 'cd src && python3 -m pydoc -w fluent_api'
                 
-                sh 'sudo mv src/fluent_api.html /var/www/html/documentins/delivery-sys.html'
+                sh 'sudo mv src/fluent_api.html /var/www/html/documentins/usql-parser.html'
             }
         }
     }
