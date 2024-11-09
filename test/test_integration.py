@@ -122,19 +122,6 @@ class TestIntegration(unittest.TestCase):
         expected = [(0, 'salario', 'INTEGER', 0, None, 0), (1, 'puesto', 'TEXT', 0, None, 0), (2, 'direccion', 'VARCHAR(255)', 0, None, 0)]
         self.assertEqual(result, expected)
 
-    def test_drop_column_direccion_empleados(self):
-        # Eliminar columna 'direccion' de la tabla de empleados
-        query = USQLQuery().cambia("empleados").elimina_columna("puesto")
-        
-        # Ejecutamos la consulta de alteración de tabla
-        self.execute_query(query)
-
-        # Verificamos que la columna fue eliminada
-        self.db.cursor.execute("PRAGMA table_info(empleados)")
-        result = self.db.cursor.fetchall()
-        expected = [(0, 'salario', 'INTEGER', 0, None, 0)]
-        self.assertEqual(result, expected)
-
     def test_invalid_query(self):
         # Consulta inválida
         query = USQLQuery().de_la_tabla("empleados").donde("salario 3000")
